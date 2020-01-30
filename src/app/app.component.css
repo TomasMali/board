@@ -1,0 +1,48 @@
+.header_row {
+    border-radius: 20px !important;
+    border-width: 1.5px !important;
+    border-style: solid !important;
+    border-color: rgb(114, 95, 238) !important;
+    width: 90%;  /*Tested and working as expected: */
+    padding-top: 1%;
+    margin: 0px auto;
+    float: none;
+    background-color: rgb(19, 16, 219)
+  }
+
+  .body_page {
+    border-radius: 20px !important;
+    width: 90%;  /*Tested and working as expected: */
+    padding-top: 1%;
+    margin: 0px auto;
+    float: none;
+  
+    background-color: #F2F2F2;
+  }
+
+
+  .col_height{
+    height: 650px;
+    border-radius: 20px !important;
+    border-width: 3.5px !important;
+    border-style: solid !important;
+  }
+
+  .body_all {
+    border-radius: 20px !important;
+    border-width: 1.5px !important;
+    border-style: solid !important;
+    border-color: rgb(226, 226, 226) !important;
+    width: 90%;  /*Tested and working as expected: */
+    padding-top: 1%;
+    margin: 0px auto;
+    float: none;
+    background-color: #F6F6F6
+  }
+
+
+  .scrollable{
+    height: 500px;
+    overflow-y: scroll;
+    overflow-x:hidden;
+}
