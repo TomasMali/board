@@ -12,46 +12,33 @@
 
 
   <div class="row">
-
     <div class="col-1">
-
     </div>
 
     <div class="col-11">
       <div class="row">
         <div class="col">
-          Area:
-          <select name="cars" class="custom-select-md">
-            <option selected>Small Custom Select Menu</option>
-            <option value="volvo">Volvo</option>
-            <option value="fiat">Fiat</option>
-            <option value="audi">Audi</option>
+          Sprint:
+          <select (change)="selectOptionSprint($event.target.value)" [(ngModel)]="selectedSprint" name="selectedSprint">
+                            <option selected *ngFor="let sprint of sprints">{{sprint.name}}</option>
           </select>
         </div>
 
         <div class="col">
-          Sprint :
-          <select name="cars" class="custom-select-md">
-            <option selected>Small Custom Select Menu</option>
-            <option value="volvo">Volvo</option>
-            <option value="fiat">Fiat</option>
-            <option value="audi">Audi</option>
+          Team:
+          <select (change)="selectOptionTeam($event.target.value)" [(ngModel)]="selectedTeam" name="selectedTeam">
+                         <option selected *ngFor="let team of teams">{{team.name}}</option>
           </select>
         </div>
 
         <div class="col">
-          State:
-          <select name="cars" class="custom-select-md">
-            <option selected>Small Custom Select Menu</option>
-            <option value="volvo">Volvo</option>
-            <option value="fiat">Fiat</option>
-            <option value="audi">Audi</option>
+          Sotto-Team:
+          <select (change)="selectOptionSubTeam($event.target.value)" [(ngModel)]="selectedSubTeam" name="selectedSubTeam">
+                        <option selected *ngFor="let subTeam of subteams">{{subTeam.name}}</option>
           </select>
         </div>
-
       </div>
     </div>
-
   </div>
 
 </div>
@@ -62,27 +49,16 @@
 
 
 <div class="container-flex body_all pt-3 pb-5 pl-5 pr-5 mt-1  text-white border-dark">
-
   <div class="row bt-1 mt-0">
+
     <div class="col bg-danger mr-1 col_height text-center">
       <hr>
       <h5 class="font-weight-bold p-1 border-dark"> <i class="fas fa-align-right"></i> TO DO</h5>
       <hr>
-
-
-
-      <div class="list-group " style="overflow-y: auto;">
-        <a href="#" class="list-group-item mb-1">First item sdffs sdf sd</a>
-        <a href="#" class="list-group-item mb-1">Second item</a>
-        <a href="#" class="list-group-item mb-1">Third item</a>
-        <a href="#" class="list-group-item mb-1">First item</a>
-        <a href="#" class="list-group-item mb-1">Second item</a>
-        <a href="#" class="list-group-item mb-1">Third item</a>
-        <a href="#" class="list-group-item mb-1">First item</a>
-        <a href="#" class="list-group-item mb-1">Second item</a>
-        <a href="#" class="list-group-item mb-1">Third item</a>
-        <a href="#" class="list-group-item mb-1">First item</a>
-
+      <div class="list-group " style="overflow-y: auto;" >
+        <app-wokitem *ngFor="let workitem of getToDo()" [workitem]="workitem"
+        (onWorkItemClicked)="workItemClicked($event)">
+      </app-wokitem>
       </div>
     </div>
 
@@ -93,24 +69,15 @@
       <h5 class="font-weight-bold p-1 border-dark"> <i class="fas fa-hourglass-start"></i> START WORKING</h5>
       <hr>
 
-
-      <div class="list-group " style="overflow-y: auto;">
-        <a href="#" class="list-group-item mb-1">First item</a>
-        <a href="#" class="list-group-item mb-1">Second item</a>
-        <a href="#" class="list-group-item mb-1">Third item</a>
-        <a href="#" class="list-group-item mb-1">First item</a>
-        <a href="#" class="list-group-item mb-1">Second item</a>
-        <a href="#" class="list-group-item mb-1">Third item</a>
-        <a href="#" class="list-group-item mb-1">First item</a>
-        <a href="#" class="list-group-item mb-1">Second item</a>
-        <a href="#" class="list-group-item mb-1">Third item</a>
-        <a href="#" class="list-group-item mb-1 ">First item</a>
-
+      <div class="list-group " style="overflow-y: auto;" >
+        <app-wokitem *ngFor="let workitem of getStartWorking()" [workitem]="workitem"
+        (onWorkItemClicked)="workItemClicked($event)">
+      </app-wokitem>
       </div>
 
-
-
     </div>
+
+
     <div class="col bg-success mr-1 col_height">
       <hr>
       <h5 class="font-weight-bold p-1 border-dark text-center "> <i class="fas fa-tasks"></i> TEST</h5>
@@ -118,35 +85,25 @@
 
       <div class="list-group" style="overflow-y: auto;">
 
-        <app-wokitem *ngFor="let workitem of workitems_" [workitem]="workitem" (onWorkItemClicked)="workItemClicked($event)" >
+        <app-wokitem *ngFor="let workitem of getTest()" [workitem]="workitem"
+        (onWorkItemClicked)="workItemClicked($event)">
+      </app-wokitem>
+
+      </div>
+    </div>
+
+    <div class="col bg-primary col_height">
+      <hr>
+      <h5 class="font-weight-bold p-1 border-dar text-center " [class.text-dark]="false"> <i class="fas fa-check"></i> DONE</h5>
+      <hr>
+
+      <div class="list-group" style="overflow-y: auto;">
+
+        <app-wokitem *ngFor="let workitem of getDone()" [workitem]="workitem"
+          (onWorkItemClicked)="workItemClicked($event)">
         </app-wokitem>
 
       </div>
-
-
-
-
-    </div>
-    <div class="col bg-primary col_height">
-      <hr>
-      <h5 class="font-weight-bold p-1 border-dar text-center "> <i class="fas fa-check"></i> DONE</h5>
-      <hr>
-
-      <div class="list-group scrollable" style="overflow-y: auto;">
-        <a href="#" class="list-group-item mb-1">First item</a>
-        <a href="#" class="list-group-item mb-1">Second item</a>
-        <a href="#" class="list-group-item mb-1">Third item</a>
-        <a href="#" class="list-group-item mb-1">First item</a>
-        <a href="#" class="list-group-item mb-1">Second item</a>
-        <a href="#" class="list-group-item mb-1">Third item</a>
-        <a href="#" class="list-group-item mb-1 ">First item</a>
-        <a href="#" class="list-group-item mb-1">Second item</a>
-        <a href="#" class="list-group-item mb-1">Third item</a>
-        <a href="#" class="list-group-item mb-1">First item</a>
-        <a href="#" class="list-group-item mb-1">Second item</a>
-        <a href="#" class="list-group-item mb-1">Third item</a>
-      </div>
-
 
 
     </div>
