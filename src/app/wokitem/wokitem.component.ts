@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Workitem } from './workitem';
 
 @Component({
@@ -9,10 +9,18 @@ import { Workitem } from './workitem';
 export class WokitemComponent implements OnInit {
 
 @Input() workitem: Workitem
+@Output() onWorkItemClicked : EventEmitter<Workitem>
 
-  constructor() { }
+  constructor() {
+    this.onWorkItemClicked = new EventEmitter<Workitem>()
+   }
 
   ngOnInit() {
+  }
+
+
+  onClickWI(){
+       this.onWorkItemClicked.emit(this.workitem)
   }
 
 }

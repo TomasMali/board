@@ -25,5 +25,9 @@ export class AppComponent {
     ]
   }
 
+  workItemClicked(workitem: Workitem){
+    alert("Hai clickato WI: \n" + workitem.id)
+  }
+
 
 }

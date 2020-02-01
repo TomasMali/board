@@ -63,96 +63,95 @@
 
 <div class="container-flex body_all pt-3 pb-5 pl-5 pr-5 mt-1  text-white border-dark">
 
-<div class="row bt-1 mt-0">
-  <div class="col bg-danger mr-1 col_height text-center" >
-  <hr>
-    <h5 class="font-weight-bold p-1 border-dark"> <i class="fas fa-align-right"></i>   TO DO</h5> 
-    <hr>
+  <div class="row bt-1 mt-0">
+    <div class="col bg-danger mr-1 col_height text-center">
+      <hr>
+      <h5 class="font-weight-bold p-1 border-dark"> <i class="fas fa-align-right"></i> TO DO</h5>
+      <hr>
 
 
 
-    <div class="list-group "   style="overflow-y: auto;" >
-      <a href="#" class="list-group-item mb-1">First item sdffs sdf sd</a>
-      <a href="#" class="list-group-item mb-1">Second item</a>
-      <a href="#" class="list-group-item mb-1">Third item</a>
-      <a href="#" class="list-group-item mb-1">First item</a>
-      <a href="#" class="list-group-item mb-1">Second item</a>
-      <a href="#" class="list-group-item mb-1">Third item</a>
-      <a href="#" class="list-group-item mb-1">First item</a>
-      <a href="#" class="list-group-item mb-1">Second item</a>
-      <a href="#" class="list-group-item mb-1">Third item</a>
-      <a href="#" class="list-group-item mb-1">First item</a>
-   
+      <div class="list-group " style="overflow-y: auto;">
+        <a href="#" class="list-group-item mb-1">First item sdffs sdf sd</a>
+        <a href="#" class="list-group-item mb-1">Second item</a>
+        <a href="#" class="list-group-item mb-1">Third item</a>
+        <a href="#" class="list-group-item mb-1">First item</a>
+        <a href="#" class="list-group-item mb-1">Second item</a>
+        <a href="#" class="list-group-item mb-1">Third item</a>
+        <a href="#" class="list-group-item mb-1">First item</a>
+        <a href="#" class="list-group-item mb-1">Second item</a>
+        <a href="#" class="list-group-item mb-1">Third item</a>
+        <a href="#" class="list-group-item mb-1">First item</a>
+
+      </div>
+    </div>
+
+
+
+    <div class="col bg-warning mr-1 col_height text-center ">
+      <hr>
+      <h5 class="font-weight-bold p-1 border-dark"> <i class="fas fa-hourglass-start"></i> START WORKING</h5>
+      <hr>
+
+
+      <div class="list-group " style="overflow-y: auto;">
+        <a href="#" class="list-group-item mb-1">First item</a>
+        <a href="#" class="list-group-item mb-1">Second item</a>
+        <a href="#" class="list-group-item mb-1">Third item</a>
+        <a href="#" class="list-group-item mb-1">First item</a>
+        <a href="#" class="list-group-item mb-1">Second item</a>
+        <a href="#" class="list-group-item mb-1">Third item</a>
+        <a href="#" class="list-group-item mb-1">First item</a>
+        <a href="#" class="list-group-item mb-1">Second item</a>
+        <a href="#" class="list-group-item mb-1">Third item</a>
+        <a href="#" class="list-group-item mb-1 ">First item</a>
+
+      </div>
+
+
+
+    </div>
+    <div class="col bg-success mr-1 col_height">
+      <hr>
+      <h5 class="font-weight-bold p-1 border-dark text-center "> <i class="fas fa-tasks"></i> TEST</h5>
+      <hr>
+
+      <div class="list-group" style="overflow-y: auto;">
+
+        <app-wokitem *ngFor="let workitem of workitems_" [workitem]="workitem" (onWorkItemClicked)="workItemClicked($event)" >
+        </app-wokitem>
+
+      </div>
+
+
+
+
+    </div>
+    <div class="col bg-primary col_height">
+      <hr>
+      <h5 class="font-weight-bold p-1 border-dar text-center "> <i class="fas fa-check"></i> DONE</h5>
+      <hr>
+
+      <div class="list-group scrollable" style="overflow-y: auto;">
+        <a href="#" class="list-group-item mb-1">First item</a>
+        <a href="#" class="list-group-item mb-1">Second item</a>
+        <a href="#" class="list-group-item mb-1">Third item</a>
+        <a href="#" class="list-group-item mb-1">First item</a>
+        <a href="#" class="list-group-item mb-1">Second item</a>
+        <a href="#" class="list-group-item mb-1">Third item</a>
+        <a href="#" class="list-group-item mb-1 ">First item</a>
+        <a href="#" class="list-group-item mb-1">Second item</a>
+        <a href="#" class="list-group-item mb-1">Third item</a>
+        <a href="#" class="list-group-item mb-1">First item</a>
+        <a href="#" class="list-group-item mb-1">Second item</a>
+        <a href="#" class="list-group-item mb-1">Third item</a>
+      </div>
+
+
+
     </div>
   </div>
 
 
 
-  <div class="col bg-warning mr-1 col_height text-center ">
-    <hr>
-    <h5 class="font-weight-bold p-1 border-dark"> <i class="fas fa-hourglass-start"></i> START WORKING</h5> 
-    <hr>
-
-
-    <div class="list-group " style="overflow-y: auto;" >
-      <a href="#" class="list-group-item mb-1">First item</a>
-      <a href="#" class="list-group-item mb-1">Second item</a>
-      <a href="#" class="list-group-item mb-1">Third item</a>
-      <a href="#" class="list-group-item mb-1">First item</a>
-      <a href="#" class="list-group-item mb-1">Second item</a>
-      <a href="#" class="list-group-item mb-1">Third item</a>
-      <a href="#" class="list-group-item mb-1">First item</a>
-      <a href="#" class="list-group-item mb-1">Second item</a>
-      <a href="#" class="list-group-item mb-1">Third item</a>
-      <a href="#" class="list-group-item mb-1 ">First item</a>
-
-    </div>
-  
-
-
-  </div>
-  <div class="col bg-success mr-1 col_height">
-    <hr>
-    <h5 class="font-weight-bold p-1 border-dark text-center "> <i class="fas fa-tasks"></i> TEST</h5> 
-    <hr>
-
-    <div class="list-group" style="overflow-y: auto;" >
-  
-    <app-wokitem *ngFor="let workitem of workitems_"
-[workitem]="workitem"  >
-    </app-wokitem>
-
-    </div>
-
-
-
-
-  </div>
-  <div class="col bg-primary col_height">
-    <hr>
-    <h5 class="font-weight-bold p-1 border-dar text-center "> <i class="fas fa-check"></i> DONE</h5> 
-    <hr>
-   
-    <div class="list-group scrollable"  style="overflow-y: auto;" >
-      <a href="#" class="list-group-item mb-1">First item</a>
-      <a href="#" class="list-group-item mb-1">Second item</a>
-      <a href="#" class="list-group-item mb-1">Third item</a>
-      <a href="#" class="list-group-item mb-1">First item</a>
-      <a href="#" class="list-group-item mb-1">Second item</a>
-      <a href="#" class="list-group-item mb-1">Third item</a>
-      <a href="#" class="list-group-item mb-1 ">First item</a>
-      <a href="#" class="list-group-item mb-1">Second item</a>
-      <a href="#" class="list-group-item mb-1">Third item</a>
-      <a href="#" class="list-group-item mb-1">First item</a>
-      <a href="#" class="list-group-item mb-1">Second item</a>
-      <a href="#" class="list-group-item mb-1">Third item</a>
-    </div>
-
-
-
-  </div>
-</div>
-
-
- 
 </div>
