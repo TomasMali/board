@@ -211,6 +211,68 @@ this.workitems_.push(new Workitem(obj.message))
         filedAgainst: "team PO"
       }),
 
+      new Workitem({
+        id: 1, plannedFor: 36,
+        summary: "Penalità :: Cancellazione righe :: As user I want to cancellare tutto ",
+        ownerBy: "TOMMAL",
+        priority: "Medium",
+        state: "Start working",
+        filedAgainst: "team masber"
+      }),
+      new Workitem({
+        id: 1, plannedFor: 36,
+        summary: "Penalità :: Cancellazione righe :: As user I want to cancellare tutto ",
+        ownerBy: "TOMMAL",
+        priority: "Medium",
+        state: "Start working",
+        filedAgainst: "team masber"
+      }),
+
+
+      new Workitem({
+        id: 1, plannedFor: 36,
+        summary: "Penalità :: Cancellazione righe :: As user I want to cancellare tutto ",
+        ownerBy: "TOMMAL",
+        priority: "Medium",
+        state: "Start working",
+        filedAgainst: "team masber"
+      }),
+
+      new Workitem({
+        id: 1, plannedFor: 36,
+        summary: "Penalità :: Cancellazione righe :: As user I want to cancellare tutto ",
+        ownerBy: "TOMMAL",
+        priority: "Medium",
+        state: "Start working",
+        filedAgainst: "team masber"
+      }),
+      new Workitem({
+        id: 1, plannedFor: 36,
+        summary: "Penalità :: Cancellazione righe :: As user I want to cancellare tutto ",
+        ownerBy: "TOMMAL",
+        priority: "Medium",
+        state: "Start working",
+        filedAgainst: "team masber"
+      }),
+      new Workitem({
+        id: 1, plannedFor: 36,
+        summary: "Penalità :: Cancellazione righe :: As user I want to cancellare tutto ",
+        ownerBy: "TOMMAL",
+        priority: "Medium",
+        state: "Start working",
+        filedAgainst: "team masber"
+      }),
+      new Workitem({
+        id: 1, plannedFor: 36,
+        summary: "Penalità :: Cancellazione righe :: As user I want to cancellare tutto ",
+        ownerBy: "TOMMAL",
+        priority: "Medium",
+        state: "Start working",
+        filedAgainst: "team masber"
+      }),
+
+
+
 
 
 

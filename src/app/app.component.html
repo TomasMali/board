@@ -55,7 +55,7 @@
       <hr>
       <h5 class="font-weight-bold p-1 border-dark"> <i class="fas fa-align-right"></i> TO DO</h5>
       <hr>
-      <div class="list-group " style="overflow-y: auto;" >
+      <div class="list-group " style="overflow-y: scroll; max-height: 500px" >
         <app-wokitem *ngFor="let workitem of getToDo()" [workitem]="workitem"
         (onWorkItemClicked)="workItemClicked($event)">
       </app-wokitem>
@@ -64,12 +64,12 @@
 
 
 
-    <div class="col bg-warning mr-1 col_height text-center ">
+    <div class="col bg-warning mr-1 col_height text-center">
       <hr>
       <h5 class="font-weight-bold p-1 border-dark"> <i class="fas fa-hourglass-start"></i> START WORKING</h5>
       <hr>
 
-      <div class="list-group " style="overflow-y: auto;" >
+      <div class="list-group" style="overflow-y: scroll;  max-height: 500px" >
         <app-wokitem *ngFor="let workitem of getStartWorking()" [workitem]="workitem"
         (onWorkItemClicked)="workItemClicked($event)">
       </app-wokitem>
@@ -83,7 +83,7 @@
       <h5 class="font-weight-bold p-1 border-dark text-center "> <i class="fas fa-tasks"></i> TEST</h5>
       <hr>
 
-      <div class="list-group" style="overflow-y: auto;">
+      <div class="list-group" style="overflow-y: scroll; max-height: 500px">
 
         <app-wokitem *ngFor="let workitem of getTest()" [workitem]="workitem"
         (onWorkItemClicked)="workItemClicked($event)">
@@ -97,7 +97,7 @@
       <h5 class="font-weight-bold p-1 border-dar text-center " [class.text-dark]="false"> <i class="fas fa-check"></i> DONE</h5>
       <hr>
 
-      <div class="list-group" style="overflow-y: auto;">
+      <div class="list-group" style="overflow-y: scroll; max-height: 500px" >
 
         <app-wokitem *ngFor="let workitem of getDone()" [workitem]="workitem"
           (onWorkItemClicked)="workItemClicked($event)">
@@ -111,4 +111,27 @@
 
 
 
+</div>
+
+
+
+<br>
+<br>
+<script>
+$('#draggable-scroll').draggable({
+  scroll: true,
+  scrollSensitivity: 40,
+  scrollSpeed: 40
+  });
+</script>
+
+<div class="row">
+  <div class="col-md-4 col-6">
+    <div id="draggable-scroll" class="card">
+      <h5 class="card-header success-color white-text">Draggable panel</h5>
+      <div class="card-body">
+        <p class="card-text">Drag me outside container boundary to enable auto-scroll</p>
+      </div>
+    </div>
+  </div>
 </div>
