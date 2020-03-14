@@ -22,7 +22,7 @@
 
 
   .col_height{
-    height: 650px;
+    height: 900px;
     border-radius: 20px !important;
     border-width: 3.5px !important;
     border-style: solid !important;
@@ -37,6 +37,7 @@
     padding-top: 1%;
     margin: 0px auto;
     float: none;
+    height: 950px;
     background-color: #F6F6F6
   }
 

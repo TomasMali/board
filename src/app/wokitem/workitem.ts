@@ -3,78 +3,41 @@
 
 export class Workitem {
 
-    id: number
-    summary: string
+    wi: number
+    storyPoint: number
+    owner: string
     description: string
-    criteriaOfAcceptance: string
-    ownerBy: string
-    type: string
     state: string
-    parent: number
-    children: number[]
-    //
-    filedAgainst: string
-    creationDate: string
-    createdBy: string
-    resolutionDate: string
-    resolvedBy: string
-    // 
-    priority: string
-    plannedFor: number
-    storyPoints: number
     
 
 
-    constructor({ 
-        id = 0, 
-        summary = "",
-        description = "",
-        criteriaOfAcceptance = "",
-        ownerBy = "",
-        type = "",
-        state = "",
-        parent = 0,
-        children = [],
-        filedAgainst = "",
-        creationDate = "",
-        createdBy = "",
-        resolutionDate = "",
-        resolvedBy = "",
-        priority = "",
-        plannedFor = 0,
-        storyPoints = 0
-
-    } = {}) {
-        this.id = id
-        this.summary = summary
-        this.description = description
-        this.criteriaOfAcceptance = criteriaOfAcceptance
-        this.ownerBy = ownerBy
-        this.type = type
-        this.state = state
-        this.parent = parent
-        this.children = children
-        this.filedAgainst = filedAgainst
-        this.creationDate = creationDate
-        this.createdBy = createdBy
-        this.resolutionDate = resolutionDate
-        this.resolvedBy =resolvedBy
-        this.priority = priority
-        this.plannedFor = plannedFor
-        this.storyPoints = storyPoints
+    constructor(wi : number,storyPoint: number, owner: string, description: string ,  state: string) {
+       this.wi = wi
+       this.storyPoint = storyPoint
+       this.owner = owner
+       this.description = description
+       this.state = state
     }
 
 
-    getId() {
-        return this.id
+    getWi() {
+        return this.wi
     }
 
-    getOwnerBy() {
-        return this.ownerBy
+    getStoryPoint() {
+        return this.storyPoint
     }
 
-    getName() {
-        return this.summary.substring(0, 85)
+    getOwner() {
+        return this.owner
+    }
+
+    getDescription(){
+        return this.description
+    }
+
+    getState(){
+        return this.state
     }
 
 }

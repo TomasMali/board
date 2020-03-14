@@ -1,6 +1,27 @@
+<div class="list-group-item mb-1 text-danger">
+
+  <button class=" text-dark mr-2" (click)="deleteWorkItem()">
+      <i class="fas fa-trash"></i>
+  </button>
+
+  Sposta:
+  <select (change)="selectOptionState($event.target.value)" [(ngModel)]="selectedState" name="selectedState" [value]='N' >
+   
+    <option  *ngFor="let state of states" >{{state.name}}</option>
+  </select>
+  <span >
+    <kbd class="ml-3"> {{workitem.getWi()}}</kbd> [{{workitem.getStoryPoint()}}] <small class="text-info">
+      [{{workitem.owner}}]
+    </small> <small class="text-primary"> <b> {{workitem.description}} </b>
+    </small>
+    
+   
+      
+
+  </span>
+
+ 
 
 
 
-  <a href="#" class="list-group-item mb-1" (click)="onClickWI()">
-    <kbd> {{workitem.id}}</kbd> [{{workitem.storyPoints}}]  <small>  [{{workitem.ownerBy}}]   {{workitem.getName()}} </small> 
-  </a>
+</div>

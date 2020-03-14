@@ -1,46 +1,79 @@
-<div class="container-flex header_row p-5 mt-3  text-white border-dark">
+<div class="container-flex header_row pt-2 pl-5 pr-5 mt-2  text-white border-dark">
 
-  <div class="row mb-5">
+  <form #searchForm="ngForm" (ngSubmit)="onSearch(searchForm.value);  searchForm.reset(); ">
+  <div class="row mb-1 mt-3">
     <div class="col-1 ">
       <button class="btn btn-dark" type="submit">Search</button>
     </div>
     <div class="col-11 ">
       <input type="text" class="form-control " placeholder="Cerca" aria-label="Username"
-        aria-describedby="basic-addon1">
+        aria-describedby="basic-addon1" name="searchForm" ngModel>
     </div>
+
   </div>
+</form>
 
 
-  <div class="row">
-    <div class="col-1">
-    </div>
+ 
+  <div class="container bg-dark pt-3 pl-3 pr-3 pb-2 my-3 text-white ">
 
-    <div class="col-11">
-      <div class="row">
-        <div class="col">
-          Sprint:
-          <select (change)="selectOptionSprint($event.target.value)" [(ngModel)]="selectedSprint" name="selectedSprint">
-                            <option selected *ngFor="let sprint of sprints">{{sprint.name}}</option>
-          </select>
+  
+    <form #workItemForm="ngForm" (ngSubmit)="onClickSubmit(workItemForm.value);  workItemForm.reset(); ">
+      <div class="row ">
+        <div class="col-1"></div>
+
+        <div class="col-3">
+
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <span class="input-group-sm input-group-text"><b>WI</b> </span>
+            </div>
+            <input type="number" class="form-control " placeholder="Work item" name="workItemForm" ngModel>
+          </div>
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><b>Desc</b> </span>
+            </div>
+            <input type="text" class="form-control" placeholder="Wi descrizione" name="descForm" ngModel>
+          </div>
         </div>
 
-        <div class="col">
-          Team:
-          <select (change)="selectOptionTeam($event.target.value)" [(ngModel)]="selectedTeam" name="selectedTeam">
-                         <option selected *ngFor="let team of teams">{{team.name}}</option>
-          </select>
-        </div>
 
-        <div class="col">
-          Sotto-Team:
-          <select (change)="selectOptionSubTeam($event.target.value)" [(ngModel)]="selectedSubTeam" name="selectedSubTeam">
-                        <option selected *ngFor="let subTeam of subteams">{{subTeam.name}}</option>
-          </select>
+        <div class="col-3">
+
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><b>S.Point</b> </span>
+            </div>
+            <input type="number" class="form-control" placeholder="Story point" name="storyPointForm" ngModel>
+          </div>
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><b>Owner</b> </span>
+            </div>
+            <input type="text" class="form-control" placeholder="Owner" name="ownerForm" ngModel>
+          </div>
+
         </div>
+        <div class="col-4">
+
+
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><b>Stato</b> </span>
+            </div>
+            <input type="text" class="form-control" placeholder="N=todo S=start T=test D=done" name="stato" ngModel>
+
+          </div>
+          <div class="input-group mb-2">
+            <input type="submit" value="Crea WorkItem" class="btn btn-primary" (click)=refresh()>
+          </div>
+        </div>
+        <div class="col-1"></div>
       </div>
-    </div>
-  </div>
+    </form>
 
+  </div>
 </div>
 
 
@@ -55,10 +88,10 @@
       <hr>
       <h5 class="font-weight-bold p-1 border-dark"> <i class="fas fa-align-right"></i> TO DO</h5>
       <hr>
-      <div class="list-group " style="overflow-y: scroll; max-height: 500px" >
-        <app-wokitem *ngFor="let workitem of getToDo()" [workitem]="workitem"
-        (onWorkItemClicked)="workItemClicked($event)">
-      </app-wokitem>
+      <div class="list-group " style="overflow-y: scroll; max-height: 760px">
+        <app-wokitem *ngFor="let workitem of getToDo()" [(workitem)]="workitem"
+          (onWorkItemClicked)="workItemClicked($event) ">
+        </app-wokitem>
       </div>
     </div>
 
@@ -69,10 +102,10 @@
       <h5 class="font-weight-bold p-1 border-dark"> <i class="fas fa-hourglass-start"></i> START WORKING</h5>
       <hr>
 
-      <div class="list-group" style="overflow-y: scroll;  max-height: 500px" >
+      <div class="list-group" style="overflow-y: scroll;  max-height: 760px">
         <app-wokitem *ngFor="let workitem of getStartWorking()" [workitem]="workitem"
-        (onWorkItemClicked)="workItemClicked($event)">
-      </app-wokitem>
+          (onWorkItemClicked)="workItemClicked($event)">
+        </app-wokitem>
       </div>
 
     </div>
@@ -83,21 +116,22 @@
       <h5 class="font-weight-bold p-1 border-dark text-center "> <i class="fas fa-tasks"></i> TEST</h5>
       <hr>
 
-      <div class="list-group" style="overflow-y: scroll; max-height: 500px">
+      <div class="list-group" style="overflow-y: scroll; max-height: 760px">
 
         <app-wokitem *ngFor="let workitem of getTest()" [workitem]="workitem"
-        (onWorkItemClicked)="workItemClicked($event)">
-      </app-wokitem>
+          (onWorkItemClicked)="workItemClicked($event)">
+        </app-wokitem>
 
       </div>
     </div>
 
     <div class="col bg-primary col_height">
       <hr>
-      <h5 class="font-weight-bold p-1 border-dar text-center " [class.text-dark]="false"> <i class="fas fa-check"></i> DONE</h5>
+      <h5 class="font-weight-bold p-1 border-dar text-center " [class.text-dark]="false"> <i class="fas fa-check"></i>
+        DONE</h5>
       <hr>
 
-      <div class="list-group" style="overflow-y: scroll; max-height: 500px" >
+      <div class="list-group" style="overflow-y: scroll; max-height: 760px">
 
         <app-wokitem *ngFor="let workitem of getDone()" [workitem]="workitem"
           (onWorkItemClicked)="workItemClicked($event)">
@@ -114,24 +148,4 @@
 </div>
 
 
-
-<br>
-<br>
-<script>
-$('#draggable-scroll').draggable({
-  scroll: true,
-  scrollSensitivity: 40,
-  scrollSpeed: 40
-  });
-</script>
-
-<div class="row">
-  <div class="col-md-4 col-6">
-    <div id="draggable-scroll" class="card">
-      <h5 class="card-header success-color white-text">Draggable panel</h5>
-      <div class="card-body">
-        <p class="card-text">Drag me outside container boundary to enable auto-scroll</p>
-      </div>
-    </div>
-  </div>
-</div>
+<router-outlet></router-outlet>
