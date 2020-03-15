@@ -76,13 +76,17 @@ var errors = ""
     //  alert("Ci sono stati degli errori: \n" + errors)
     }
 
-    this.WIService.postWorkItem({
+    var obj = {
       wi: data.workItemForm,
       storyPoint: data.storyPointForm,
       owner: data.ownerForm,
       description: data.descForm,
-      state: data.status
-    })
+      state: data.stato
+    }
+
+    console.log(obj)
+
+    this.WIService.postWorkItem(obj)
       .subscribe(
         res => {
         },
