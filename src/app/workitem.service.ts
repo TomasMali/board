@@ -8,9 +8,9 @@ import { Workitem } from './wokitem/workitem';
 export class WorkitemService {
   data: object
   loading: boolean
-   board = "https://93.49.6.246:3006/board"
-   insertWi = "https://93.49.6.246:3006/board/insert"
-   deleteWi = "https://93.49.6.246:3006/board/delete_one"
+   board = "http://93.49.6.246:3006/board"
+   insertWi = "http://93.49.6.246:3006/board/insert"
+   deleteWi = "http://93.49.6.246:3006/board/delete_one"
 
   constructor(public http: HttpClient) { }
 
