@@ -75,10 +75,17 @@ router.post('/insert', (req, res, next) => {
     const owner_ = req.body.owner;
     const description_ = req.body.description;
     const state_ = req.body.state;
-console.log("Body vale: " + req.body.storyPoint)
+    const color_ = req.body.color;
+
 
     Board.find({ wi: wi_ }, function (err, docs) {
         if (docs.length) {
+
+            // se non modifico il colore, modifico lo stato
+if(color_ == null){
+    console.log("valore_colore:: " + color_)
+    console.log("valore_state:: " + state_)
+
             Board.updateOne(
                 { wi: wi_ },
                 { $set: { "state": state_ } }
@@ -92,6 +99,29 @@ console.log("Body vale: " + req.body.storyPoint)
                             .json({ message: false });
 
                 })
+            } else{
+                console.log("valore_colore22222:: " + color_)
+                console.log("valore_state2222:: " + state_)
+
+                Board.updateOne(
+                    { wi: wi_ },
+                    { $set: { "color": color_ } }
+                ).exec()
+                    .then(result => {
+                        if (result.nModified != 0)
+                            res.status(200)
+                                .json({ message: "Work Item: " + wi_ + "  modificato correttamente" });
+                        else
+                            res.status(200)
+                                .json({ message: false });
+    
+                    })
+            }
+
+
+
+
+
         } else {
             // Lo creo nuovo
             const workItem = new Board({
@@ -100,7 +130,8 @@ console.log("Body vale: " + req.body.storyPoint)
                 storyPoint: storyPoint_,
                 owner: owner_,
                 description: description_,
-                state: state_
+                state: state_,
+                color: color_
             });
 
 

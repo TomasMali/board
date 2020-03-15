@@ -8,15 +8,18 @@ export class Workitem {
     owner: string
     description: string
     state: string
+    color: string
     
 
 
-    constructor(wi : number,storyPoint: number, owner: string, description: string ,  state: string) {
+    constructor(wi : number,storyPoint: number, owner: string, description: string ,
+          state: string, color: string) {
        this.wi = wi
        this.storyPoint = storyPoint
        this.owner = owner
        this.description = description
        this.state = state
+       this.color = color
     }
 
 
@@ -38,6 +41,9 @@ export class Workitem {
 
     getState(){
         return this.state
+    }
+    getColor(){
+        return this.color
     }
 
 }

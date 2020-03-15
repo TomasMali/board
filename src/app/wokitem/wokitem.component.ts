@@ -12,6 +12,7 @@ export class WokitemComponent implements OnInit {
 
   @Input() workitem: Workitem
   @Output() onWorkItemClicked: EventEmitter<Workitem>
+  color: string="lavender"
 
   constructor(private WIService: WorkitemService) {
     this.onWorkItemClicked = new EventEmitter<Workitem>()
@@ -20,7 +21,35 @@ export class WokitemComponent implements OnInit {
 
   ngOnInit() {
     this.selectedState = this.workitem.getState()
+    this.selectedColor = this.workitem.getColor()
   }
+
+
+  colors = [
+    { name: 'yellow' },
+    { name: 'GreenYellow' },
+    { name: 'Lavender' },
+    {name: "LightSkyBlue"}
+
+  ]
+
+  selectedColor: string = ""
+
+  selectOptionColors(colore){
+       this.selectedColor = this.workitem.getColor()
+
+       this.WIService.postWorkItem({
+        wi: this.workitem.getWi(),
+        color: colore
+      })
+        .subscribe(
+          res => {
+            window.location.reload();
+          },
+          err => console.log(err)
+        )
+  }
+
 
 
   states = [

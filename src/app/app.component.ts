@@ -23,6 +23,7 @@ export class AppComponent {
 
   workItem: Workitem[] = [];
 
+
   constructor(public WIService: WorkitemService) {
 
   }
@@ -81,7 +82,8 @@ var errors = ""
       storyPoint: data.storyPointForm,
       owner: data.ownerForm,
       description: data.descForm,
-      state: data.stato
+      state: data.stato,
+      color: "Lavender"
     }
 
     console.log(obj)
@@ -117,7 +119,7 @@ var errors = ""
         this.workItem.splice(0, this.workItem.length)
         for (var i = 0; i < res.message.length; i++) {
           var loc = <Workitem>res.message[i]
-          this.workItem.push(new Workitem(loc.wi, loc.storyPoint, loc.owner, loc.description, loc.state))
+          this.workItem.push(new Workitem(loc.wi, loc.storyPoint, loc.owner, loc.description, loc.state, loc.color))
         }
       },
       err => console.log(err)

@@ -8,7 +8,8 @@ _id : mongoose.Schema.Types.ObjectId,
   storyPoint: Number,
   owner: String,
   description: String,
-  state: String
+  state: String,
+  color: String
 
 })
 

@@ -1,27 +1,26 @@
-<div class="list-group-item mb-1 text-danger">
+<div class="list-group-item mb-1 text-danger" [style.background-color]="selectedColor">
 
   <button class=" text-dark mr-2" (click)="deleteWorkItem()">
-      <i class="fas fa-trash"></i>
+    <i class="fas fa-trash"></i>
   </button>
 
-  Sposta:
-  <select (change)="selectOptionState($event.target.value)" [(ngModel)]="selectedState" name="selectedState" [value]='N' >
-   
-    <option  *ngFor="let state of states" >{{state.name}}</option>
+  Colore:
+  <select (change)="selectOptionColors($event.target.value)" [(ngModel)]="selectedColor" name="selectedColor"
+    [value]='Lavender'>
+    <option *ngFor="let color of colors">{{color.name}}</option>
   </select>
-  <span >
+
+  Sposta:
+  <select (change)="selectOptionState($event.target.value)" [(ngModel)]="selectedState" name="selectedState"
+    [value]='N'>
+    <option *ngFor="let state of states">{{state.name}}</option>
+  </select>
+
+  <span>
     <kbd class="ml-3"> {{workitem.getWi()}}</kbd> [{{workitem.getStoryPoint()}}] <small class="text-info">
       [{{workitem.owner}}]
     </small> <small class="text-primary"> <b> {{workitem.description}} </b>
     </small>
-    
-   
-      
-
   </span>
-
- 
-
-
 
 </div>
