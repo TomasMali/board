@@ -1,24 +1,12 @@
-
-
 const http = require('http');
 
 const app = require('./app')
 
 const port = process.env.PORT || 3006;
 
-const https = require('https');
+
+const server = http.createServer(app);
+
+server.listen(port)
 
 
-const fs = require('fs');
-
-const options = {
-    key: fs.readFileSync('key.pem'),
-    cert: fs.readFileSync('cert.pem')
-  };
-
-//const server = https.createServer(options, app);
-
-//server.listen(port)
-
-
-http.createServer(app).listen(port);
