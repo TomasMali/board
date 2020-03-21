@@ -29,7 +29,9 @@ export class WokitemComponent implements OnInit {
     { name: 'yellow' },
     { name: 'GreenYellow' },
     { name: 'Lavender' },
-    {name: "LightSkyBlue"}
+    {name: "LightSkyBlue"},
+    {name: "DarkOrange"},
+    {name: "Orange"}
 
   ]
 

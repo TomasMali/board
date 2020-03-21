@@ -14,7 +14,7 @@ const mongoose = require('mongoose')
 // First route, get all Menu
 router.get('/', (req, res, next) => {
     //  const id = req.params.telegramId;
-    Board.find()
+    Board.find().sort( { color: 1 } )
         .exec().
         then(doc => {
             if (doc.length) {
