@@ -6,7 +6,7 @@ const boardSchema = mongoose.Schema({
 _id : mongoose.Schema.Types.ObjectId,
   wi: Number,
   storyPoint: Number,
-  owner: String,
+  sprint: String,
   description: String,
   state: String,
   color: String

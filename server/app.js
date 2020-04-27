@@ -14,9 +14,11 @@ const board = require('./api/routs/board/board')
 const mongoose = require('mongoose')
 
 const db_jexp = "mongodb+srv://visiting:visiting@visiting-g3tpj.mongodb.net/workitem?retryWrites=true&w=majority"
-const db_sushi = "mongodb+srv://sushi:sushi@clustersushi-erhzq.mongodb.net/sushi?retryWrites=true&w=majority"
+// const db_sushi = "mongodb+srv://sushi:sushi@clustersushi-erhzq.mongodb.net/sushi?retryWrites=true&w=majority"
+const db_dashboard = "mongodb+srv://visiting:visiting@visiting-g3tpj.mongodb.net/dashboard?retryWrites=true&w=majority"
 
-mongoose.connect(db_jexp,
+
+mongoose.connect(db_dashboard,
  { useNewUrlParser: true }, function(error) {
   // if error is truthy, the initial connection failed.
   console.log(error);

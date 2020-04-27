@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Workitem } from './wokitem/workitem';
 import { FormGroup, FormControl } from '@angular/forms';
 import { WorkitemService } from './workitem.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,87 +13,118 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 
-export class AppComponent {
-  ngOnInit() {
-    this.getAll()
-  }
+export class AppComponent implements OnInit, OnDestroy{
+
 
   title = 'dashboard';
-  malFormed : boolean = false
+  malFormed: boolean = false
 
-  workItem: Workitem[] = [];
+  workItems: Workitem[] = [];
+
+  private workItemSUb: Subscription
+
+  sprintNumber: string[] = ["Sprint 26", "Sprint 27", "Sprint 28", "Sprint 29", 
+  "Sprint 30", "Sprint 31", "Sprint 32", "Sprint 33"]
+
+  selectedSprintNumber: string = ""
 
 
   constructor(public WIService: WorkitemService) {
+  }
+
+
+  ngOnInit() {
+
+    this.selectedSprintNumber = this.getCookie("sprint") === "" ? "Sprint 26" : this.getCookie("sprint") 
+
+    this.WIService.getAllWi(this.selectedSprintNumber)
+
+    console.log(this.getCookie("sprint"))
+
+    this.workItemSUb = this.WIService.getWorkItemsUpdateListener()
+    .subscribe((workItems_: Workitem[]) => {
+             this.workItems = workItems_
+             this.selectedSprintNumber = this.getCookie("sprint") === "" ? "Sprint 26" : this.getCookie("sprint") 
+
+    })
+  }
+
+  ngOnDestroy() {
+    this.workItemSUb.unsubscribe()
+  }
+
+
+  getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+
+  onSprintChange(sprint: string){
+    this.selectedSprintNumber = sprint
+    this.WIService.getAllWi(sprint)
+
+    document.cookie = "sprint=" + sprint;
+  }
+
+
+
+  onSearch(data) {
+
+    //   alert(  data.searchForm )
+    this.WIService.getOne(data.searchForm).subscribe(
+      res => {
+        if (res.message != "Nessun risultato trovao") {
+          alert(
+            "******************  Il risultato del Wi :  *************** \n" +
+            "Wi: " + res.message[0].wi + "\n" +
+            "StoryPoint: " + res.message[0].storyPoint + "\n" +
+            "Owner: " + res.message[0].owner + "\n" +
+            "Description: " + res.message[0].description + "\n" +
+            "State: " + res.message[0].state
+          )
+        }
+        else {
+          alert("Il WI " + data.searchForm + " non è stato trovato!")
+        }
+      },
+      err => console.log(err)
+    )
+
 
   }
 
-  refresh(): void {
-    if(this.malFormed == false)
-    window.location.reload();
 
-  }
 
-  onSearch(data){
-     //   alert(  data.searchForm )
-        this.WIService.getOne(data.searchForm).subscribe(
-          res => {
-            if(res.message != "Nessun risultato trovao"){
-               alert(
-                 "******************  Il risultato del Wi :  *************** \n" + 
-                 "Wi: " + res.message[0].wi + "\n" +
-                 "StoryPoint: " + res.message[0].storyPoint + "\n" +
-                 "Owner: " + res.message[0].owner + "\n" + 
-                 "Description: " + res.message[0].description + "\n" + 
-                 "State: " + res.message[0].state 
-                 )
-            }
-            else{
-              alert( "Il WI " + data.searchForm + " non è stato trovato!")
-            } 
-          },
-          err => console.log(err)
-        )
-  }
 
-  onClickSubmit(data) {
-   // alert("Ci sono stati degli errori: \n" )
-var errors = ""
+  onInsertWiSubmit(data) {
 
-    if(typeof data.workItemForm != 'number'){
-      this.malFormed = true
-      errors += "WorkItem deve essere numerico! " + "\n"
-    }
-    if(typeof data.storyPointForm != 'number'){
-      this.malFormed = true
-      errors += "StoryPoint deve essere numerico! " + "\n"
-    }
-    if(data.status != "N" || data.status != "S" || data.status != "T" || data.status != "D"){
-      this.malFormed = true
-      errors += "Lo stato del WI non consentito! " + "\n"
-    }
-
-    if(errors != ""){
-    //  alert("Ci sono stati degli errori: \n" + errors)
-    }
 
     var obj = {
       wi: data.workItemForm,
       storyPoint: data.storyPointForm,
-      owner: data.ownerForm,
+      sprint: data.selectedSprintNumber == null ? this.sprintNumber[0] : data.selectedSprintNumber,
       description: data.descForm,
-      state: data.stato,
+      state: "N",
       color: "Lavender"
     }
 
-    console.log(obj)
 
-    this.WIService.postWorkItem(obj)
-      .subscribe(
-        res => {
-        },
-        err => console.log(err)
-      )
+    console.log("I coockie sono: " + this.getCookie("sprint"))
+
+    this.WIService.insertWorkItem(obj)
+
 
   }
 
@@ -109,77 +140,37 @@ var errors = ""
   selectOptionSprint(sel) {
     console.log(sel)
     this.ngOnInit();
-    // this.getAll()
-    // console.log(this.workitem.getWi())
-  }
-
-  getAll() {
-    this.WIService.getAllWi().subscribe(
-      res => {
-        this.workItem.splice(0, this.workItem.length)
-        for (var i = 0; i < res.message.length; i++) {
-          var loc = <Workitem>res.message[i]
-          this.workItem.push(new Workitem(loc.wi, loc.storyPoint, loc.owner, loc.description, loc.state, loc.color))
-        }
-      },
-      err => console.log(err)
-    )
 
   }
-
 
 
 
   getToDo() {
-    return (this.workItem.filter(x => {
-      return x.getState() === "N" // sta per to do 
+    return (this.workItems.filter(x => {
+      return x.state === "N" // sta per to do 
     }))
   }
 
   getStartWorking() {
-    return (this.workItem.filter(x => {
-      return x.getState() === "S"
+    return (this.workItems.filter(x => {
+      return x.state === "S"
     }))
   }
 
   getTest() {
-    return (this.workItem.filter(x => {
-      return x.getState() === "T"
+    return (this.workItems.filter(x => {
+      return x.state === "T"
     }))
   }
 
 
   getDone() {
-    return (this.workItem.filter(x => {
-      return x.getState() === "D"
+    return (this.workItems.filter(x => {
+      return x.state === "D"
     }))
   }
 
 
-
-
-
-
-
-  workItemClicked(workitem: Workitem) {
-    alert("Hai clickato WI: \n" + workitem)
-  }
-
-  selectOptionTeam(sel) {
-    console.log()
-
-  }
-
-  selectOptionSubTeam(sel) {
-    console.log(sel)
-  }
-
-
-
-  onSprintChange(event) {
-
-    console.log(event.target.value)
-  }
 
 
 }

@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-flex header_row pt-2 pl-5 pr-5 mt-2  text-white border-dark\">\n\n  <form #searchForm=\"ngForm\" (ngSubmit)=\"onSearch(searchForm.value);  searchForm.reset(); \">\n  <div class=\"row mb-1 mt-3\">\n    <div class=\"col-1 \">\n      <button class=\"btn btn-dark\" type=\"submit\">Search</button>\n    </div>\n    <div class=\"col-11 \">\n      <input type=\"text\" class=\"form-control \" placeholder=\"Cerca\" aria-label=\"Username\"\n        aria-describedby=\"basic-addon1\" name=\"searchForm\" ngModel>\n    </div>\n\n  </div>\n</form>\n\n\n \n  <div class=\"container bg-dark pt-3 pl-3 pr-3 pb-2 my-3 text-white \">\n\n  \n    <form #workItemForm=\"ngForm\" (ngSubmit)=\"onClickSubmit(workItemForm.value);  workItemForm.reset(); \">\n      <div class=\"row \">\n        <div class=\"col-1\"></div>\n\n        <div class=\"col-3\">\n\n          <div class=\"input-group mb-2\">\n            <div class=\"input-group-prepend\">\n              <span class=\"input-group-sm input-group-text\"><b>WI</b> </span>\n            </div>\n            <input type=\"number\" class=\"form-control \" placeholder=\"Work item\" name=\"workItemForm\" ngModel>\n          </div>\n          <div class=\"input-group mb-2\">\n            <div class=\"input-group-prepend\">\n              <span class=\"input-group-text\"><b>Desc</b> </span>\n            </div>\n            <input type=\"text\" class=\"form-control\" placeholder=\"Wi descrizione\" name=\"descForm\" ngModel>\n          </div>\n        </div>\n\n\n        <div class=\"col-3\">\n\n          <div class=\"input-group mb-2\">\n            <div class=\"input-group-prepend\">\n              <span class=\"input-group-text\"><b>S.Point</b> </span>\n            </div>\n            <input type=\"number\" class=\"form-control\" placeholder=\"Story point\" name=\"storyPointForm\" ngModel>\n          </div>\n          <div class=\"input-group mb-2\">\n            <div class=\"input-group-prepend\">\n              <span class=\"input-group-text\"><b>Owner</b> </span>\n            </div>\n            <input type=\"text\" class=\"form-control\" placeholder=\"Owner\" name=\"ownerForm\" ngModel>\n          </div>\n\n        </div>\n        <div class=\"col-4\">\n\n\n          <div class=\"input-group mb-2\">\n            <div class=\"input-group-prepend\">\n              <span class=\"input-group-text\"><b>Stato</b> </span>\n            </div>\n            <input type=\"text\" class=\"form-control\" placeholder=\"N=todo S=start T=test D=done\" name=\"stato\" ngModel>\n\n          </div>\n          <div class=\"input-group mb-2\">\n            <input type=\"submit\" value=\"Crea WorkItem\" class=\"btn btn-primary\" (click)=refresh()>\n          </div>\n        </div>\n        <div class=\"col-1\"></div>\n      </div>\n    </form>\n\n  </div>\n</div>\n\n\n\n\n\n\n<div class=\"container-flex body_all pt-3 pb-5 pl-5 pr-5 mt-1  text-white border-dark\">\n  <div class=\"row bt-1 mt-0\">\n\n    <div class=\"col bg-danger mr-1 col_height text-center\">\n      <hr>\n      <h5 class=\"font-weight-bold p-1 border-dark\"> <i class=\"fas fa-align-right\"></i> TO DO</h5>\n      <hr>\n      <div class=\"list-group \" style=\"overflow-y: scroll; max-height: 550px\">\n        <app-wokitem *ngFor=\"let workitem of getToDo()\" [(workitem)]=\"workitem\"\n          (onWorkItemClicked)=\"workItemClicked($event) \">\n        </app-wokitem>\n      </div>\n    </div>\n\n\n\n    <div class=\"col bg-warning mr-1 col_height text-center\">\n      <hr>\n      <h5 class=\"font-weight-bold p-1 border-dark\"> <i class=\"fas fa-hourglass-start\"></i> START WORKING</h5>\n      <hr>\n\n      <div class=\"list-group\" style=\"overflow-y: scroll;  max-height: 550px\">\n        <app-wokitem *ngFor=\"let workitem of getStartWorking()\" [workitem]=\"workitem\"\n          (onWorkItemClicked)=\"workItemClicked($event)\">\n        </app-wokitem>\n      </div>\n\n    </div>\n\n\n    <div class=\"col bg-success mr-1 col_height\">\n      <hr>\n      <h5 class=\"font-weight-bold p-1 border-dark text-center \"> <i class=\"fas fa-tasks\"></i> TEST</h5>\n      <hr>\n\n      <div class=\"list-group\" style=\"overflow-y: scroll; max-height: 560px\">\n\n        <app-wokitem *ngFor=\"let workitem of getTest()\" [workitem]=\"workitem\"\n          (onWorkItemClicked)=\"workItemClicked($event)\">\n        </app-wokitem>\n\n      </div>\n    </div>\n\n    <div class=\"col bg-primary col_height\">\n      <hr>\n      <h5 class=\"font-weight-bold p-1 border-dar text-center \" [class.text-dark]=\"false\"> <i class=\"fas fa-check\"></i>\n        DONE</h5>\n      <hr>\n\n      <div class=\"list-group\" style=\"overflow-y: scroll; max-height: 550px\">\n\n        <app-wokitem *ngFor=\"let workitem of getDone()\" [workitem]=\"workitem\"\n          (onWorkItemClicked)=\"workItemClicked($event)\">\n        </app-wokitem>\n\n      </div>\n\n\n    </div>\n  </div>\n\n\n\n</div>\n\n\n<router-outlet></router-outlet>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-flex header_row pt-2 pl-5 pr-5 mt-2  text-white border-dark\">\n\n  <form #searchForm=\"ngForm\" (ngSubmit)=\"onSearch(searchForm.value);  searchForm.reset(); \">\n  <div class=\"row mb-1 mt-3\">\n    <div class=\"col-1 \">\n      <button class=\"btn btn-dark\" type=\"submit\">Search</button>\n    </div>\n    <div class=\"col-11 \">\n      <input type=\"text\" class=\"form-control \" placeholder=\"Cerca\" aria-label=\"Username\"\n        aria-describedby=\"basic-addon1\" name=\"searchForm\" ngModel>\n    </div>\n\n  </div>\n</form>\n\n\n \n  <div class=\"container bg-dark pt-3 pl-3 pr-3 pb-2 my-3 text-white \">\n\n  \n    <form #workItemForm=\"ngForm\" (ngSubmit)=\"onInsertWiSubmit(workItemForm.value);  workItemForm.reset(); \">\n    \n      <div class=\"row \">\n       \n        <div class=\"col col-0 col-md -1\"></div>\n\n        <div class=\"col col-12 col-md-3\">\n\n          <div class=\"input-group mb-2\">\n            <div class=\"input-group-prepend \">\n              <span class=\"input-group height-span input-group-text \"><b>WI</b> </span>\n            </div>\n            <input type=\"number\" class=\"form-control form-control-sm\" placeholder=\"Work item\" name=\"workItemForm\" ngModel>\n          </div>\n          <div class=\"input-group mb-2\">\n            <div class=\"input-group-prepend\">\n              <span class=\"input-group-text height-span \"><b>Desc</b> </span>\n            </div>\n            <input type=\"text\" class=\"form-control  form-control-sm\" placeholder=\"Wi descrizione\" name=\"descForm\" ngModel>\n          </div>\n        </div>\n\n\n        <div class=\"col col-12 col-md-3\">\n\n          <div class=\"input-group mb-2\">\n            <div class=\"input-group-prepend\">\n              <span class=\"input-group-text height-span \"><b>S.Point</b> </span>\n            </div>\n            <input type=\"number\" class=\"form-control form-control-sm\" placeholder=\"Story point\" name=\"storyPointForm\" ngModel>\n          </div>\n          <div class=\"input-group mb-2\">\n\n            <div class=\"input-group-prepend\">\n              <span class=\"input-group-text height-span \"><b>Sprint</b> </span>\n            </div>\n\n            <select class=\"ml-0\" (change)=\"onSprintChange($event.target.value)\" [(ngModel)]=\"selectedSprintNumber\" name=\"selectedSprintNumber\"\n            [value]='selectedSprintNumber'>\n            <option *ngFor=\"let sprint of sprintNumber\">{{sprint}}</option>\n          </select>\n\n          </div>\n\n        </div>\n\n        <div class=\"col col-12 col-md-4\">\n\n          <div class=\"input-group mb-2\">\n            <input type=\"submit\" value=\"Crea WorkItem\" class=\"btn btn-sm btn-primary\" >\n          </div>\n        </div>\n\n        <div class=\"col col-0  col-md-1\"></div>\n\n      </div>\n    </form>\n\n  </div>\n</div>\n\n\n\n\n\n\n<div class=\"container-flex body_all pt-3 pb-5 pl-5 pr-5 mt-1  text-white border-dark\">\n  \n  <div class=\"row  mt-0\">\n\n    <div class=\"col bg-danger mr-1 col_height text-center\">\n      <hr>\n      <h5 class=\"font-weight-bold p-1 border-dark\"> <i class=\"fas fa-align-right\"></i> TO DO</h5>\n      <hr>\n      <div class=\"list-group  \"  [ngClass]=\"{'scroll': getToDo().length > 4}\" >\n        <app-wokitem *ngFor=\"let workitem of getToDo();  let i = index\" [(workitem)]=\"workitem\">\n        </app-wokitem>\n      </div>\n    </div>\n\n\n\n    <div class=\"col bg-warning mr-1 col_height text-center\">\n      <hr>\n      <h5 class=\"font-weight-bold p-1 border-dark\"> <i class=\"fas fa-hourglass-start\"></i> START WORKING</h5>\n      <hr>\n\n      <div class=\"list-group \" [ngClass]=\"{'scroll': getStartWorking().length > 4}\">\n        <app-wokitem *ngFor=\"let workitem of getStartWorking(); let i = index\" [workitem]=\"workitem\" >\n        </app-wokitem>\n      </div>\n\n    </div>\n\n\n    <div class=\"col bg-success mr-1 col_height\">\n      <hr>\n      <h5 class=\"font-weight-bold p-1 border-dark text-center \"> <i class=\"fas fa-tasks\"></i> TEST</h5>\n      <hr>\n\n      <div class=\"list-group\" [ngClass]=\"{'scroll': getTest().length > 4}\">\n\n        <app-wokitem *ngFor=\"let workitem of getTest()\" [workitem]=\"workitem\">\n        </app-wokitem>\n\n      </div>\n    </div>\n\n    <div class=\"col bg-primary col_height\">\n      <hr>\n      <h5 class=\"font-weight-bold p-1 border-dar text-center \" [class.text-dark]=\"false\"> <i class=\"fas fa-check\"></i>\n        DONE</h5>\n      <hr>\n\n      <div class=\"list-group \" [ngClass]=\"{'scroll': getDone().length > 4}\"   >\n\n        <app-wokitem *ngFor=\"let workitem of getDone()\" [workitem]=\"workitem\">\n        </app-wokitem>\n\n      </div>\n\n\n    </div>\n  </div>\n\n\n\n</div>\n\n\n<router-outlet></router-outlet>");
 
 /***/ }),
 
@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"list-group-item mb-1 text-danger\" [style.background-color]=\"selectedColor\">\n\n  <button class=\" text-dark mr-2\" (click)=\"deleteWorkItem()\">\n    <i class=\"fas fa-trash\"></i>\n  </button>\n\n  Colore:\n  <select (change)=\"selectOptionColors($event.target.value)\" [(ngModel)]=\"selectedColor\" name=\"selectedColor\"\n    [value]='Lavender'>\n    <option *ngFor=\"let color of colors\">{{color.name}}</option>\n  </select>\n\n  Sposta:\n  <select (change)=\"selectOptionState($event.target.value)\" [(ngModel)]=\"selectedState\" name=\"selectedState\"\n    [value]='N'>\n    <option *ngFor=\"let state of states\">{{state.name}}</option>\n  </select>\n\n  <span>\n    <kbd class=\"ml-3\"> {{workitem.getWi()}}</kbd> [{{workitem.getStoryPoint()}}] <small class=\"text-info\">\n      [{{workitem.owner}}]\n    </small> <small class=\"text-primary\"> <b> {{workitem.description}} </b>\n    </small>\n  </span>\n\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"list-group-item mb-1 text-danger\" [style.background-color]=\"selectedColor\">\n\n  <button class=\" text-dark mr-2\" (click)=\"deleteWorkItem()\">\n    <i class=\"fas fa-trash\"></i>\n  </button>\n\n  Colore:\n  <select (change)=\"selectOptionColors($event.target.value)\" [(ngModel)]=\"selectedColor\" name=\"selectedColor\"\n    [value]='Lavender'>\n    <option *ngFor=\"let color of colors\">{{color.name}}</option>\n  </select>\n\n  Sposta:\n  <select (change)=\"selectOptionState($event.target.value)\" [(ngModel)]=\"selectedState\" name=\"selectedState\"\n    [value]='N'>\n    <option *ngFor=\"let state of states\">{{state.name}}</option>\n  </select>\n\n  <span>\n    <kbd class=\"ml-3\"> {{workitem.wi}}</kbd> [{{workitem.storyPoint}}] <small class=\"text-info\">\n      [{{workitem.sprint}}]\n    </small> <small class=\"text-primary\"> <b> {{workitem.description}} </b>\n    </small>\n  </span>\n\n</div>");
 
 /***/ }),
 
@@ -317,7 +317,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".header_row {\r\n    border-radius: 20px !important;\r\n    border-width: 1.5px !important;\r\n    border-style: solid !important;\r\n    border-color: rgb(114, 95, 238) !important;\r\n    width: 90%;  /*Tested and working as expected: */\r\n    padding-top: 1%;\r\n    margin: 0px auto;\r\n    float: none;\r\n    background-color: rgb(19, 16, 219)\r\n  }\r\n\r\n  .body_page {\r\n    border-radius: 20px !important;\r\n    width: 90%;  /*Tested and working as expected: */\r\n    padding-top: 1%;\r\n    margin: 0px auto;\r\n    float: none;\r\n  \r\n    background-color: #F2F2F2;\r\n  }\r\n\r\n  .col_height{\r\n    height: 690px;\r\n    border-radius: 20px !important;\r\n    border-width: 3.5px !important;\r\n    border-style: solid !important;\r\n  }\r\n\r\n  .body_all {\r\n    border-radius: 20px !important;\r\n    border-width: 1.5px !important;\r\n    border-style: solid !important;\r\n    border-color: rgb(226, 226, 226) !important;\r\n    width: 90%;  /*Tested and working as expected: */\r\n    padding-top: 1%;\r\n    margin: 0px auto;\r\n    float: none;\r\n    height: 720px;\r\n    background-color: #F6F6F6\r\n  }\r\n\r\n  .scrollable{\r\n    height: 70px;\r\n    overflow-y: scroll;\r\n    overflow-x:hidden;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSw4QkFBOEI7SUFDOUIsOEJBQThCO0lBQzlCLDhCQUE4QjtJQUM5QiwwQ0FBMEM7SUFDMUMsVUFBVSxHQUFHLG1DQUFtQztJQUNoRCxlQUFlO0lBQ2YsZ0JBQWdCO0lBQ2hCLFdBQVc7SUFDWDtFQUNGOztFQUVBO0lBQ0UsOEJBQThCO0lBQzlCLFVBQVUsR0FBRyxtQ0FBbUM7SUFDaEQsZUFBZTtJQUNmLGdCQUFnQjtJQUNoQixXQUFXOztJQUVYLHlCQUF5QjtFQUMzQjs7RUFHQTtJQUNFLGFBQWE7SUFDYiw4QkFBOEI7SUFDOUIsOEJBQThCO0lBQzlCLDhCQUE4QjtFQUNoQzs7RUFFQTtJQUNFLDhCQUE4QjtJQUM5Qiw4QkFBOEI7SUFDOUIsOEJBQThCO0lBQzlCLDJDQUEyQztJQUMzQyxVQUFVLEdBQUcsbUNBQW1DO0lBQ2hELGVBQWU7SUFDZixnQkFBZ0I7SUFDaEIsV0FBVztJQUNYLGFBQWE7SUFDYjtFQUNGOztFQUdBO0lBQ0UsWUFBWTtJQUNaLGtCQUFrQjtJQUNsQixpQkFBaUI7QUFDckIiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5oZWFkZXJfcm93IHtcclxuICAgIGJvcmRlci1yYWRpdXM6IDIwcHggIWltcG9ydGFudDtcclxuICAgIGJvcmRlci13aWR0aDogMS41cHggIWltcG9ydGFudDtcclxuICAgIGJvcmRlci1zdHlsZTogc29saWQgIWltcG9ydGFudDtcclxuICAgIGJvcmRlci1jb2xvcjogcmdiKDExNCwgOTUsIDIzOCkgIWltcG9ydGFudDtcclxuICAgIHdpZHRoOiA5MCU7ICAvKlRlc3RlZCBhbmQgd29ya2luZyBhcyBleHBlY3RlZDogKi9cclxuICAgIHBhZGRpbmctdG9wOiAxJTtcclxuICAgIG1hcmdpbjogMHB4IGF1dG87XHJcbiAgICBmbG9hdDogbm9uZTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYigxOSwgMTYsIDIxOSlcclxuICB9XHJcblxyXG4gIC5ib2R5X3BhZ2Uge1xyXG4gICAgYm9yZGVyLXJhZGl1czogMjBweCAhaW1wb3J0YW50O1xyXG4gICAgd2lkdGg6IDkwJTsgIC8qVGVzdGVkIGFuZCB3b3JraW5nIGFzIGV4cGVjdGVkOiAqL1xyXG4gICAgcGFkZGluZy10b3A6IDElO1xyXG4gICAgbWFyZ2luOiAwcHggYXV0bztcclxuICAgIGZsb2F0OiBub25lO1xyXG4gIFxyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI0YyRjJGMjtcclxuICB9XHJcblxyXG5cclxuICAuY29sX2hlaWdodHtcclxuICAgIGhlaWdodDogNjkwcHg7XHJcbiAgICBib3JkZXItcmFkaXVzOiAyMHB4ICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItd2lkdGg6IDMuNXB4ICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkICFpbXBvcnRhbnQ7XHJcbiAgfVxyXG5cclxuICAuYm9keV9hbGwge1xyXG4gICAgYm9yZGVyLXJhZGl1czogMjBweCAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLXdpZHRoOiAxLjVweCAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZCAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLWNvbG9yOiByZ2IoMjI2LCAyMjYsIDIyNikgIWltcG9ydGFudDtcclxuICAgIHdpZHRoOiA5MCU7ICAvKlRlc3RlZCBhbmQgd29ya2luZyBhcyBleHBlY3RlZDogKi9cclxuICAgIHBhZGRpbmctdG9wOiAxJTtcclxuICAgIG1hcmdpbjogMHB4IGF1dG87XHJcbiAgICBmbG9hdDogbm9uZTtcclxuICAgIGhlaWdodDogNzIwcHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjRjZGNkY2XHJcbiAgfVxyXG5cclxuXHJcbiAgLnNjcm9sbGFibGV7XHJcbiAgICBoZWlnaHQ6IDcwcHg7XHJcbiAgICBvdmVyZmxvdy15OiBzY3JvbGw7XHJcbiAgICBvdmVyZmxvdy14OmhpZGRlbjtcclxufVxyXG4iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".header_row {\r\n    border-radius: 20px !important;\r\n    border-width: 1.5px !important;\r\n    border-style: solid !important;\r\n    border-color: rgb(114, 95, 238) !important;\r\n    width: 90%;  /*Tested and working as expected: */\r\n    padding-top: 1%;\r\n    margin: 0px auto;\r\n    float: none;\r\n    background-color: rgb(19, 16, 219)\r\n  }\r\n\r\n  .body_page {\r\n    border-radius: 20px !important;\r\n    width: 90%;  /*Tested and working as expected: */\r\n    padding-top: 1%;\r\n    margin: 0px auto;\r\n    float: none;\r\n  \r\n    background-color: #F2F2F2;\r\n  }\r\n\r\n  .col_height{\r\n    height: 690px;\r\n    border-radius: 20px !important;\r\n    border-width: 3.5px !important;\r\n    border-style: solid !important;\r\n  }\r\n\r\n  .body_all {\r\n    border-radius: 20px !important;\r\n    border-width: 1.5px !important;\r\n    border-style: solid !important;\r\n    border-color: rgb(226, 226, 226) !important;\r\n    width: 90%;  /*Tested and working as expected: */\r\n    padding-top: 1%;\r\n    margin: 0px auto;\r\n    float: none;\r\n   \r\n    background-color: #F6F6F6\r\n  }\r\n\r\n  .scroll {\r\n    overflow-y: scroll;\r\n     max-height: 550px\r\n  }\r\n\r\n  .height-span{\r\n    height: 31px;\r\n  }\r\n\r\n\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSw4QkFBOEI7SUFDOUIsOEJBQThCO0lBQzlCLDhCQUE4QjtJQUM5QiwwQ0FBMEM7SUFDMUMsVUFBVSxHQUFHLG1DQUFtQztJQUNoRCxlQUFlO0lBQ2YsZ0JBQWdCO0lBQ2hCLFdBQVc7SUFDWDtFQUNGOztFQUVBO0lBQ0UsOEJBQThCO0lBQzlCLFVBQVUsR0FBRyxtQ0FBbUM7SUFDaEQsZUFBZTtJQUNmLGdCQUFnQjtJQUNoQixXQUFXOztJQUVYLHlCQUF5QjtFQUMzQjs7RUFHQTtJQUNFLGFBQWE7SUFDYiw4QkFBOEI7SUFDOUIsOEJBQThCO0lBQzlCLDhCQUE4QjtFQUNoQzs7RUFFQTtJQUNFLDhCQUE4QjtJQUM5Qiw4QkFBOEI7SUFDOUIsOEJBQThCO0lBQzlCLDJDQUEyQztJQUMzQyxVQUFVLEdBQUcsbUNBQW1DO0lBQ2hELGVBQWU7SUFDZixnQkFBZ0I7SUFDaEIsV0FBVzs7SUFFWDtFQUNGOztFQUdBO0lBQ0Usa0JBQWtCO0tBQ2pCO0VBQ0g7O0VBRUE7SUFDRSxZQUFZO0VBQ2QiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5oZWFkZXJfcm93IHtcclxuICAgIGJvcmRlci1yYWRpdXM6IDIwcHggIWltcG9ydGFudDtcclxuICAgIGJvcmRlci13aWR0aDogMS41cHggIWltcG9ydGFudDtcclxuICAgIGJvcmRlci1zdHlsZTogc29saWQgIWltcG9ydGFudDtcclxuICAgIGJvcmRlci1jb2xvcjogcmdiKDExNCwgOTUsIDIzOCkgIWltcG9ydGFudDtcclxuICAgIHdpZHRoOiA5MCU7ICAvKlRlc3RlZCBhbmQgd29ya2luZyBhcyBleHBlY3RlZDogKi9cclxuICAgIHBhZGRpbmctdG9wOiAxJTtcclxuICAgIG1hcmdpbjogMHB4IGF1dG87XHJcbiAgICBmbG9hdDogbm9uZTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYigxOSwgMTYsIDIxOSlcclxuICB9XHJcblxyXG4gIC5ib2R5X3BhZ2Uge1xyXG4gICAgYm9yZGVyLXJhZGl1czogMjBweCAhaW1wb3J0YW50O1xyXG4gICAgd2lkdGg6IDkwJTsgIC8qVGVzdGVkIGFuZCB3b3JraW5nIGFzIGV4cGVjdGVkOiAqL1xyXG4gICAgcGFkZGluZy10b3A6IDElO1xyXG4gICAgbWFyZ2luOiAwcHggYXV0bztcclxuICAgIGZsb2F0OiBub25lO1xyXG4gIFxyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI0YyRjJGMjtcclxuICB9XHJcblxyXG5cclxuICAuY29sX2hlaWdodHtcclxuICAgIGhlaWdodDogNjkwcHg7XHJcbiAgICBib3JkZXItcmFkaXVzOiAyMHB4ICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItd2lkdGg6IDMuNXB4ICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkICFpbXBvcnRhbnQ7XHJcbiAgfVxyXG5cclxuICAuYm9keV9hbGwge1xyXG4gICAgYm9yZGVyLXJhZGl1czogMjBweCAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLXdpZHRoOiAxLjVweCAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZCAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLWNvbG9yOiByZ2IoMjI2LCAyMjYsIDIyNikgIWltcG9ydGFudDtcclxuICAgIHdpZHRoOiA5MCU7ICAvKlRlc3RlZCBhbmQgd29ya2luZyBhcyBleHBlY3RlZDogKi9cclxuICAgIHBhZGRpbmctdG9wOiAxJTtcclxuICAgIG1hcmdpbjogMHB4IGF1dG87XHJcbiAgICBmbG9hdDogbm9uZTtcclxuICAgXHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjRjZGNkY2XHJcbiAgfVxyXG5cclxuXHJcbiAgLnNjcm9sbCB7XHJcbiAgICBvdmVyZmxvdy15OiBzY3JvbGw7XHJcbiAgICAgbWF4LWhlaWdodDogNTUwcHhcclxuICB9XHJcblxyXG4gIC5oZWlnaHQtc3BhbntcclxuICAgIGhlaWdodDogMzFweDtcclxuICB9XHJcblxyXG5cclxuXHJcbiJdfQ== */");
 
 /***/ }),
 
@@ -333,9 +333,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _wokitem_workitem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./wokitem/workitem */ "./src/app/wokitem/workitem.ts");
-/* harmony import */ var _workitem_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./workitem.service */ "./src/app/workitem.service.ts");
-
+/* harmony import */ var _workitem_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./workitem.service */ "./src/app/workitem.service.ts");
 
 
 
@@ -344,7 +342,10 @@ let AppComponent = class AppComponent {
         this.WIService = WIService;
         this.title = 'dashboard';
         this.malFormed = false;
-        this.workItem = [];
+        this.workItems = [];
+        this.sprintNumber = ["Sprint 26", "Sprint 27", "Sprint 28", "Sprint 29",
+            "Sprint 30", "Sprint 31", "Sprint 32", "Sprint 33"];
+        this.selectedSprintNumber = "";
         this.sprints = [
             { name: 'N' },
             { name: 'S' },
@@ -354,11 +355,37 @@ let AppComponent = class AppComponent {
         this.selectedSprint = this.sprints[this.sprints.length - 1].name;
     }
     ngOnInit() {
-        this.getAll();
+        this.selectedSprintNumber = this.getCookie("sprint") === "" ? "Sprint 26" : this.getCookie("sprint");
+        this.WIService.getAllWi(this.selectedSprintNumber);
+        console.log(this.getCookie("sprint"));
+        this.workItemSUb = this.WIService.getWorkItemsUpdateListener()
+            .subscribe((workItems_) => {
+            this.workItems = workItems_;
+            this.selectedSprintNumber = this.getCookie("sprint") === "" ? "Sprint 26" : this.getCookie("sprint");
+        });
     }
-    refresh() {
-        if (this.malFormed == false)
-            window.location.reload();
+    ngOnDestroy() {
+        this.workItemSUb.unsubscribe();
+    }
+    getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+    onSprintChange(sprint) {
+        this.selectedSprintNumber = sprint;
+        this.WIService.getAllWi(sprint);
+        document.cookie = "sprint=" + sprint;
     }
     onSearch(data) {
         //   alert(  data.searchForm )
@@ -376,87 +403,45 @@ let AppComponent = class AppComponent {
             }
         }, err => console.log(err));
     }
-    onClickSubmit(data) {
-        // alert("Ci sono stati degli errori: \n" )
-        var errors = "";
-        if (typeof data.workItemForm != 'number') {
-            this.malFormed = true;
-            errors += "WorkItem deve essere numerico! " + "\n";
-        }
-        if (typeof data.storyPointForm != 'number') {
-            this.malFormed = true;
-            errors += "StoryPoint deve essere numerico! " + "\n";
-        }
-        if (data.status != "N" || data.status != "S" || data.status != "T" || data.status != "D") {
-            this.malFormed = true;
-            errors += "Lo stato del WI non consentito! " + "\n";
-        }
-        if (errors != "") {
-            //  alert("Ci sono stati degli errori: \n" + errors)
-        }
+    onInsertWiSubmit(data) {
         var obj = {
             wi: data.workItemForm,
             storyPoint: data.storyPointForm,
-            owner: data.ownerForm,
+            sprint: data.selectedSprintNumber == null ? this.sprintNumber[0] : data.selectedSprintNumber,
             description: data.descForm,
-            state: data.stato,
+            state: "N",
             color: "Lavender"
         };
-        console.log(obj);
-        this.WIService.postWorkItem(obj)
-            .subscribe(res => {
-        }, err => console.log(err));
+        console.log("I coockie sono: " + this.getCookie("sprint"));
+        this.WIService.insertWorkItem(obj);
     }
     selectOptionSprint(sel) {
         console.log(sel);
         this.ngOnInit();
-        // this.getAll()
-        // console.log(this.workitem.getWi())
-    }
-    getAll() {
-        this.WIService.getAllWi().subscribe(res => {
-            this.workItem.splice(0, this.workItem.length);
-            for (var i = 0; i < res.message.length; i++) {
-                var loc = res.message[i];
-                this.workItem.push(new _wokitem_workitem__WEBPACK_IMPORTED_MODULE_2__["Workitem"](loc.wi, loc.storyPoint, loc.owner, loc.description, loc.state, loc.color));
-            }
-        }, err => console.log(err));
     }
     getToDo() {
-        return (this.workItem.filter(x => {
-            return x.getState() === "N"; // sta per to do 
+        return (this.workItems.filter(x => {
+            return x.state === "N"; // sta per to do 
         }));
     }
     getStartWorking() {
-        return (this.workItem.filter(x => {
-            return x.getState() === "S";
+        return (this.workItems.filter(x => {
+            return x.state === "S";
         }));
     }
     getTest() {
-        return (this.workItem.filter(x => {
-            return x.getState() === "T";
+        return (this.workItems.filter(x => {
+            return x.state === "T";
         }));
     }
     getDone() {
-        return (this.workItem.filter(x => {
-            return x.getState() === "D";
+        return (this.workItems.filter(x => {
+            return x.state === "D";
         }));
-    }
-    workItemClicked(workitem) {
-        alert("Hai clickato WI: \n" + workitem);
-    }
-    selectOptionTeam(sel) {
-        console.log();
-    }
-    selectOptionSubTeam(sel) {
-        console.log(sel);
-    }
-    onSprintChange(event) {
-        console.log(event.target.value);
     }
 };
 AppComponent.ctorParameters = () => [
-    { type: _workitem_service__WEBPACK_IMPORTED_MODULE_3__["WorkitemService"] }
+    { type: _workitem_service__WEBPACK_IMPORTED_MODULE_2__["WorkitemService"] }
 ];
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -568,44 +553,38 @@ let WokitemComponent = class WokitemComponent {
             { name: 'D' }
         ];
         this.selectedState = "";
-        this.onWorkItemClicked = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
     }
     ngOnInit() {
-        this.selectedState = this.workitem.getState();
-        this.selectedColor = this.workitem.getColor();
+        this.selectedState = this.workitem.state;
+        this.selectedColor = this.workitem.color;
     }
     selectOptionColors(colore) {
-        this.selectedColor = this.workitem.getColor();
-        this.WIService.postWorkItem({
-            wi: this.workitem.getWi(),
+        this.selectedColor = this.workitem.color;
+        const workItem = {
+            wi: this.workitem.wi,
+            storyPoint: this.workitem.storyPoint,
+            sprint: this.workitem.sprint,
+            description: this.workitem.description,
+            state: null,
             color: colore
-        })
-            .subscribe(res => {
-            window.location.reload();
-        }, err => console.log(err));
+        };
+        this.WIService.changeColorOrStateWorkItem(workItem);
     }
     selectOptionState(sel) {
-        this.selectedState = this.workitem.getState();
-        this.WIService.postWorkItem({
-            wi: this.workitem.getWi(),
-            state: sel
-        })
-            .subscribe(res => {
-            window.location.reload();
-        }, err => console.log(err));
-    }
-    onClickWI() {
-        this.onWorkItemClicked.emit(this.workitem);
+        this.selectedState = this.workitem.state;
+        const workItem = {
+            wi: this.workitem.wi,
+            storyPoint: this.workitem.storyPoint,
+            sprint: this.workitem.sprint,
+            description: this.workitem.description,
+            state: sel,
+            color: null
+        };
+        this.WIService.changeColorOrStateWorkItem(workItem);
     }
     deleteWorkItem() {
         if (confirm("Stai per cancellare il WI, proseguire?")) {
-            //  alert(this.workitem.getWi())
-            this.WIService.deleteWorkI({
-                wi: this.workitem.getWi()
-            })
-                .subscribe(res => {
-                window.location.reload();
-            }, err => console.log(err));
+            this.WIService.deleteWorkI(this.workitem.wi);
         }
     }
 };
@@ -615,9 +594,6 @@ WokitemComponent.ctorParameters = () => [
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
 ], WokitemComponent.prototype, "workitem", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
-], WokitemComponent.prototype, "onWorkItemClicked", void 0);
 WokitemComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-wokitem',
@@ -626,50 +602,6 @@ WokitemComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     })
 ], WokitemComponent);
 
-
-
-/***/ }),
-
-/***/ "./src/app/wokitem/workitem.ts":
-/*!*************************************!*\
-  !*** ./src/app/wokitem/workitem.ts ***!
-  \*************************************/
-/*! exports provided: Workitem */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Workitem", function() { return Workitem; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-
-class Workitem {
-    constructor(wi, storyPoint, owner, description, state, color) {
-        this.wi = wi;
-        this.storyPoint = storyPoint;
-        this.owner = owner;
-        this.description = description;
-        this.state = state;
-        this.color = color;
-    }
-    getWi() {
-        return this.wi;
-    }
-    getStoryPoint() {
-        return this.storyPoint;
-    }
-    getOwner() {
-        return this.owner;
-    }
-    getDescription() {
-        return this.description;
-    }
-    getState() {
-        return this.state;
-    }
-    getColor() {
-        return this.color;
-    }
-}
 
 
 /***/ }),
@@ -687,24 +619,83 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+
+
 
 
 
 let WorkitemService = class WorkitemService {
     constructor(http) {
         this.http = http;
-        this.board = "http://93.49.6.246:3006/board";
-        this.insertWi = "http://93.49.6.246:3006/board/insert";
-        this.deleteWi = "http://93.49.6.246:3006/board/delete_one";
+        this.board = "http://93.49.6.246:3008/board";
+        this.insertWi = "http://93.49.6.246:3008/board/insert";
+        this.deleteWi = "http://93.49.6.246:3008/board/delete_one";
+        this.workItemsUpdatet = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.workItems = [];
     }
-    getAllWi() {
-        return this.http.get(this.board);
+    getWorkItemsUpdateListener() {
+        return this.workItemsUpdatet.asObservable();
+    }
+    getAllWi(sprint) {
+        this.http.get(this.board)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(data => {
+            return data.message.map(workI => {
+                return {
+                    wi: workI.wi,
+                    storyPoint: workI.storyPoint,
+                    sprint: workI.sprint,
+                    description: workI.description,
+                    state: workI.state,
+                    color: workI.color
+                };
+            });
+        }))
+            .subscribe(resultData => {
+            console.log("I dati sono: " + resultData);
+            this.workItems = resultData.filter(x => {
+                return x.sprint === sprint;
+            });
+            this.workItemsUpdatet.next([...this.workItems]);
+        });
     }
     getOne(wi) {
         return this.http.get(this.board + "/getBoard/" + wi);
     }
-    postWorkItem(wi) {
-        return this.http.post(this.insertWi, wi);
+    changeColorOrStateWorkItem(wi) {
+        return this.http.post(this.insertWi, wi)
+            .subscribe(resultData => {
+            if (resultData) {
+                // find the WorkItem and modify it
+                var foundIndexWi = this.workItems.findIndex(x => x.wi === wi.wi);
+                var wi_new = Object.assign({}, this.workItems[foundIndexWi]);
+                // voglio modificare lo stato
+                if (wi.color == null) {
+                    wi_new.state = wi.state;
+                }
+                else 
+                // voglio modificare il colore
+                if (wi.state == null) {
+                    wi_new.color = wi.color;
+                }
+                this.workItems[foundIndexWi] = wi_new;
+                this.workItemsUpdatet.next([...this.workItems]);
+            }
+        }, err => console.log(err));
+    }
+    insertWorkItem(wi) {
+        return this.http.post(this.insertWi, wi)
+            .subscribe(resultData => {
+            console.log(resultData);
+            if (resultData.message) {
+                this.workItems.push(wi);
+                this.workItemsUpdatet.next([...this.workItems]);
+            }
+            else {
+                alert("Work item già esistente");
+            }
+        }, err => console.log(err));
     }
     deleteWorkI(wi) {
         const options = {
@@ -712,10 +703,16 @@ let WorkitemService = class WorkitemService {
                 'Content-Type': 'application/json'
             }),
             body: {
-                wi: wi.wi
+                wi: wi
             }
         };
-        return this.http.delete(this.deleteWi, options);
+        this.http.delete(this.deleteWi, options)
+            .subscribe(res => {
+            this.workItems.splice(this.workItems.findIndex(function (i) {
+                return i.wi === wi;
+            }), 1);
+            this.workItemsUpdatet.next([...this.workItems]);
+        }, err => alert("Problemi con la cancellazione!"));
     }
 };
 WorkitemService.ctorParameters = () => [

@@ -13,12 +13,14 @@ const mongoose = require('mongoose')
  */
 // First route, get all Menu
 router.get('/', (req, res, next) => {
-    //  const id = req.params.telegramId;
-    Board.find().sort( { color: 1 } )
+    
+    Board.find()
+        .sort({ color: 1 })
         .exec().
         then(doc => {
+           
             if (doc.length) {
-                //   console.log(doc.length)
+                   console.log(doc)
                 res.status(200).json({
                     message: doc
                 })
@@ -72,34 +74,39 @@ router.get('/getBoard/:wi', (req, res, next) => {
 router.post('/insert', (req, res, next) => {
     const wi_ = req.body.wi;
     const storyPoint_ = req.body.storyPoint;
-    const owner_ = req.body.owner;
+    const sprint_ = req.body.sprint;
     const description_ = req.body.description;
     const state_ = req.body.state;
     const color_ = req.body.color;
 
+    // console.log(req.body)
+
 
     Board.find({ wi: wi_ }, function (err, docs) {
+
         if (docs.length) {
 
+            console.log("dentro docs")
+
             // se non modifico il colore, modifico lo stato
-if(color_ == null){
-    console.log("valore_colore:: " + color_)
-    console.log("valore_state:: " + state_)
+            if (color_ == null) {
+                console.log("valore_colore:: " + color_)
+                console.log("valore_state:: " + state_)
 
-            Board.updateOne(
-                { wi: wi_ },
-                { $set: { "state": state_ } }
-            ).exec()
-                .then(result => {
-                    if (result.nModified != 0)
-                        res.status(200)
-                            .json({ message: "Work Item: " + wi_ + "  modificato correttamente" });
-                    else
-                        res.status(200)
-                            .json({ message: false });
+                Board.updateOne(
+                    { wi: wi_ },
+                    { $set: { "state": state_ } }
+                ).exec()
+                    .then(result => {
+                        if (result.nModified != 0)
+                            res.status(200)
+                                .json({ message: true });
+                        else
+                            res.status(200)
+                                .json({ message: false });
 
-                })
-            } else{
+                    })
+            } else if (state_ == null) {
                 console.log("valore_colore22222:: " + color_)
                 console.log("valore_state2222:: " + state_)
 
@@ -110,15 +117,19 @@ if(color_ == null){
                     .then(result => {
                         if (result.nModified != 0)
                             res.status(200)
-                                .json({ message: "Work Item: " + wi_ + "  modificato correttamente" });
+                                .json({ message: true });
                         else
                             res.status(200)
                                 .json({ message: false });
-    
+
                     })
             }
-
-
+            // sto inserendo uno che esiste già
+            else {
+                console.log("dentro esiste gia")
+                res.status(200)
+                    .json({ message: false });
+            }
 
 
 
@@ -128,17 +139,26 @@ if(color_ == null){
                 _id: new mongoose.Types.ObjectId(),
                 wi: wi_,
                 storyPoint: storyPoint_,
-                owner: owner_,
+                sprint: sprint_,
                 description: description_,
                 state: state_,
                 color: color_
             });
 
+            console.log("Nuovo : " + workItem)
+
 
             workItem.save()
                 .then(result => {
-                    //      console.log("Menu " + result + " inserted correctly!")
-                    res.send("New inserted correctly!")
+                    console.log(result)
+
+                    if (result._id)
+                        res.status(200)
+                            .json({ message: true });
+                    else
+                        res.status(200)
+                            .json({ message: false });
+
                 })
                 .catch(err => {
                     console.log(err)

@@ -18,58 +18,61 @@
   <div class="container bg-dark pt-3 pl-3 pr-3 pb-2 my-3 text-white ">
 
   
-    <form #workItemForm="ngForm" (ngSubmit)="onClickSubmit(workItemForm.value);  workItemForm.reset(); ">
+    <form #workItemForm="ngForm" (ngSubmit)="onInsertWiSubmit(workItemForm.value);  workItemForm.reset(); ">
+    
       <div class="row ">
-        <div class="col-1"></div>
+       
+        <div class="col col-0 col-md -1"></div>
 
-        <div class="col-3">
+        <div class="col col-12 col-md-3">
 
           <div class="input-group mb-2">
-            <div class="input-group-prepend">
-              <span class="input-group-sm input-group-text"><b>WI</b> </span>
+            <div class="input-group-prepend ">
+              <span class="input-group height-span input-group-text "><b>WI</b> </span>
             </div>
-            <input type="number" class="form-control " placeholder="Work item" name="workItemForm" ngModel>
+            <input type="number" class="form-control form-control-sm" placeholder="Work item" name="workItemForm" ngModel>
           </div>
           <div class="input-group mb-2">
             <div class="input-group-prepend">
-              <span class="input-group-text"><b>Desc</b> </span>
+              <span class="input-group-text height-span "><b>Desc</b> </span>
             </div>
-            <input type="text" class="form-control" placeholder="Wi descrizione" name="descForm" ngModel>
+            <input type="text" class="form-control  form-control-sm" placeholder="Wi descrizione" name="descForm" ngModel>
           </div>
         </div>
 
 
-        <div class="col-3">
+        <div class="col col-12 col-md-3">
 
           <div class="input-group mb-2">
             <div class="input-group-prepend">
-              <span class="input-group-text"><b>S.Point</b> </span>
+              <span class="input-group-text height-span "><b>S.Point</b> </span>
             </div>
-            <input type="number" class="form-control" placeholder="Story point" name="storyPointForm" ngModel>
+            <input type="number" class="form-control form-control-sm" placeholder="Story point" name="storyPointForm" ngModel>
           </div>
           <div class="input-group mb-2">
+
             <div class="input-group-prepend">
-              <span class="input-group-text"><b>Owner</b> </span>
+              <span class="input-group-text height-span "><b>Sprint</b> </span>
             </div>
-            <input type="text" class="form-control" placeholder="Owner" name="ownerForm" ngModel>
+
+            <select class="ml-0" (change)="onSprintChange($event.target.value)" [(ngModel)]="selectedSprintNumber" name="selectedSprintNumber"
+            [value]='selectedSprintNumber'>
+            <option *ngFor="let sprint of sprintNumber">{{sprint}}</option>
+          </select>
+
           </div>
 
         </div>
-        <div class="col-4">
 
+        <div class="col col-12 col-md-4">
 
           <div class="input-group mb-2">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><b>Stato</b> </span>
-            </div>
-            <input type="text" class="form-control" placeholder="N=todo S=start T=test D=done" name="stato" ngModel>
-
-          </div>
-          <div class="input-group mb-2">
-            <input type="submit" value="Crea WorkItem" class="btn btn-primary" (click)=refresh()>
+            <input type="submit" value="Crea WorkItem" class="btn btn-sm btn-primary" >
           </div>
         </div>
-        <div class="col-1"></div>
+
+        <div class="col col-0  col-md-1"></div>
+
       </div>
     </form>
 
@@ -82,15 +85,15 @@
 
 
 <div class="container-flex body_all pt-3 pb-5 pl-5 pr-5 mt-1  text-white border-dark">
-  <div class="row bt-1 mt-0">
+  
+  <div class="row  mt-0">
 
     <div class="col bg-danger mr-1 col_height text-center">
       <hr>
       <h5 class="font-weight-bold p-1 border-dark"> <i class="fas fa-align-right"></i> TO DO</h5>
       <hr>
-      <div class="list-group " style="overflow-y: scroll; max-height: 550px">
-        <app-wokitem *ngFor="let workitem of getToDo()" [(workitem)]="workitem"
-          (onWorkItemClicked)="workItemClicked($event) ">
+      <div class="list-group  "  [ngClass]="{'scroll': getToDo().length > 4}" >
+        <app-wokitem *ngFor="let workitem of getToDo();  let i = index" [(workitem)]="workitem">
         </app-wokitem>
       </div>
     </div>
@@ -102,9 +105,8 @@
       <h5 class="font-weight-bold p-1 border-dark"> <i class="fas fa-hourglass-start"></i> START WORKING</h5>
       <hr>
 
-      <div class="list-group" style="overflow-y: scroll;  max-height: 550px">
-        <app-wokitem *ngFor="let workitem of getStartWorking()" [workitem]="workitem"
-          (onWorkItemClicked)="workItemClicked($event)">
+      <div class="list-group " [ngClass]="{'scroll': getStartWorking().length > 4}">
+        <app-wokitem *ngFor="let workitem of getStartWorking(); let i = index" [workitem]="workitem" >
         </app-wokitem>
       </div>
 
@@ -116,10 +118,9 @@
       <h5 class="font-weight-bold p-1 border-dark text-center "> <i class="fas fa-tasks"></i> TEST</h5>
       <hr>
 
-      <div class="list-group" style="overflow-y: scroll; max-height: 560px">
+      <div class="list-group" [ngClass]="{'scroll': getTest().length > 4}">
 
-        <app-wokitem *ngFor="let workitem of getTest()" [workitem]="workitem"
-          (onWorkItemClicked)="workItemClicked($event)">
+        <app-wokitem *ngFor="let workitem of getTest()" [workitem]="workitem">
         </app-wokitem>
 
       </div>
@@ -131,10 +132,9 @@
         DONE</h5>
       <hr>
 
-      <div class="list-group" style="overflow-y: scroll; max-height: 550px">
+      <div class="list-group " [ngClass]="{'scroll': getDone().length > 4}"   >
 
-        <app-wokitem *ngFor="let workitem of getDone()" [workitem]="workitem"
-          (onWorkItemClicked)="workItemClicked($event)">
+        <app-wokitem *ngFor="let workitem of getDone()" [workitem]="workitem">
         </app-wokitem>
 
       </div>

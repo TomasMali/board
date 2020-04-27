@@ -11,17 +11,16 @@ import { HttpHeaders } from '@angular/common/http';
 export class WokitemComponent implements OnInit {
 
   @Input() workitem: Workitem
-  @Output() onWorkItemClicked: EventEmitter<Workitem>
-  color: string="lavender"
+
+  color: string = "lavender"
 
   constructor(private WIService: WorkitemService) {
-    this.onWorkItemClicked = new EventEmitter<Workitem>()
 
   }
 
   ngOnInit() {
-    this.selectedState = this.workitem.getState()
-    this.selectedColor = this.workitem.getColor()
+    this.selectedState = this.workitem.state
+    this.selectedColor = this.workitem.color
   }
 
 
@@ -29,27 +28,28 @@ export class WokitemComponent implements OnInit {
     { name: 'yellow' },
     { name: 'GreenYellow' },
     { name: 'Lavender' },
-    {name: "LightSkyBlue"},
-    {name: "DarkOrange"},
-    {name: "Orange"}
+    { name: "LightSkyBlue" },
+    { name: "DarkOrange" },
+    { name: "Orange" }
 
   ]
 
   selectedColor: string = ""
 
-  selectOptionColors(colore){
-       this.selectedColor = this.workitem.getColor()
+  selectOptionColors(colore) {
 
-       this.WIService.postWorkItem({
-        wi: this.workitem.getWi(),
-        color: colore
-      })
-        .subscribe(
-          res => {
-            window.location.reload();
-          },
-          err => console.log(err)
-        )
+    this.selectedColor = this.workitem.color
+
+    const workItem = {
+      wi: this.workitem.wi,
+      storyPoint: this.workitem.storyPoint,
+      sprint: this.workitem.sprint,
+      description: this.workitem.description,
+      state: null,
+      color: colore
+    }
+    this.WIService.changeColorOrStateWorkItem(workItem)
+
   }
 
 
@@ -65,43 +65,32 @@ export class WokitemComponent implements OnInit {
   selectedState: string = ""
 
   selectOptionState(sel) {
-    this.selectedState = this.workitem.getState()
+    this.selectedState = this.workitem.state
 
-    this.WIService.postWorkItem({
-      wi: this.workitem.getWi(),
-      state: sel
-    })
-      .subscribe(
-        res => {
-          window.location.reload();
-        },
-        err => console.log(err)
-      )
+    const workItem = {
+      wi: this.workitem.wi,
+      storyPoint: this.workitem.storyPoint,
+      sprint: this.workitem.sprint,
+      description: this.workitem.description,
+      state: sel,
+      color: null
+    }
+
+    this.WIService.changeColorOrStateWorkItem(workItem)
+
 
   }
 
-  onClickWI() {
-    this.onWorkItemClicked.emit(this.workitem)
-  }
 
- 
+
 
 
   deleteWorkItem() {
-
     if (confirm("Stai per cancellare il WI, proseguire?")) {
-      //  alert(this.workitem.getWi())
-      this.WIService.deleteWorkI({
-        wi: this.workitem.getWi()
-      })
-        .subscribe(
-          res => {
-            window.location.reload();
-          },
-          err => console.log(err)
-        )
+      this.WIService.deleteWorkI(this.workitem.wi)
     }
-
   }
+
+
 
 }
