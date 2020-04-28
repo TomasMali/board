@@ -23,8 +23,8 @@ export class AppComponent implements OnInit, OnDestroy{
 
   private workItemSUb: Subscription
 
-  sprintNumber: string[] = ["Sprint 26", "Sprint 27", "Sprint 28", "Sprint 29", 
-  "Sprint 30", "Sprint 31", "Sprint 32", "Sprint 33"]
+  sprintNumber: string[] = ["Sprint 07", "Sprint 08", "Sprint 09", 
+  "Sprint 10", "Sprint 11", "Sprint 12", "Sprint 13"]
 
   selectedSprintNumber: string = ""
 
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
 
-    this.selectedSprintNumber = this.getCookie("sprint") === "" ? "Sprint 26" : this.getCookie("sprint") 
+    this.selectedSprintNumber = this.getCookie("sprint") === "" ? "Sprint 07" : this.getCookie("sprint") 
 
     this.WIService.getAllWi(this.selectedSprintNumber)
 
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit, OnDestroy{
     this.workItemSUb = this.WIService.getWorkItemsUpdateListener()
     .subscribe((workItems_: Workitem[]) => {
              this.workItems = workItems_
-             this.selectedSprintNumber = this.getCookie("sprint") === "" ? "Sprint 26" : this.getCookie("sprint") 
+             this.selectedSprintNumber = this.getCookie("sprint") === "" ? "Sprint 07" : this.getCookie("sprint") 
 
     })
   }
