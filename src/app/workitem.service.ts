@@ -12,9 +12,9 @@ export class WorkitemService {
 
   data: object
   loading: boolean
-  board = "http://localhost:3008/board"
-  insertWi = "http://localhost:3008/board/insert"
-  deleteWi = "http://localhost:3008/board/delete_one"
+  board = "http://93.49.6.246:3008/board"
+  insertWi = "http://93.49.6.246:3008/board/insert"
+  deleteWi = "http://93.49.6.246:3008/board/delete_one"
 
   private workItemsUpdatet = new Subject<Workitem[]>()
   private workItems: Workitem[] = []
