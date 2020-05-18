@@ -90,7 +90,7 @@
 
     <div class="col bg-danger mr-1 col_height text-center">
       <hr>
-      <h5 class="font-weight-bold p-1 border-dark"> <i class="fas fa-align-right"></i> TO DO</h5>
+      <h5 class="font-weight-bold p-1 border-dark"> <i class="fas fa-align-right"></i> TO DO <small class="pl-2 font-weight-bold font-italic "> ({{percTodo | number  }}%)</small> </h5>
       <hr>
       <div class="list-group  "  [ngClass]="{'scroll': getToDo().length > 4}" >
         <app-wokitem *ngFor="let workitem of getToDo();  let i = index" [(workitem)]="workitem">
@@ -102,7 +102,7 @@
 
     <div class="col bg-warning mr-1 col_height text-center">
       <hr>
-      <h5 class="font-weight-bold p-1 border-dark"> <i class="fas fa-hourglass-start"></i> START WORKING</h5>
+      <h5 class="font-weight-bold p-1 border-dark"> <i class="fas fa-hourglass-start"></i> START WORKING <small class="pl-2 font-weight-bold font-italic "> ({{percStart | number }}%)</small></h5>
       <hr>
 
       <div class="list-group " [ngClass]="{'scroll': getStartWorking().length > 4}">
@@ -115,7 +115,7 @@
 
     <div class="col bg-success mr-1 col_height">
       <hr>
-      <h5 class="font-weight-bold p-1 border-dark text-center "> <i class="fas fa-tasks"></i> TEST</h5>
+      <h5 class="font-weight-bold p-1 border-dark text-center "> <i class="fas fa-tasks"></i> TEST <small class="pl-2 font-weight-bold font-italic "> ({{percTest | number  }}%)</small></h5>
       <hr>
 
       <div class="list-group" [ngClass]="{'scroll': getTest().length > 4}">
@@ -129,7 +129,7 @@
     <div class="col bg-primary col_height">
       <hr>
       <h5 class="font-weight-bold p-1 border-dar text-center " [class.text-dark]="false"> <i class="fas fa-check"></i>
-        DONE</h5>
+        DONE <small class="pl-2 font-weight-bold font-italic "> ({{percDone | number  }}%)</small></h5>
       <hr>
 
       <div class="list-group " [ngClass]="{'scroll': getDone().length > 4}"   >

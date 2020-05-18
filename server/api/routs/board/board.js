@@ -82,7 +82,7 @@ router.post('/insert', (req, res, next) => {
     // console.log(req.body)
 
 
-    Board.find({ wi: wi_ }, function (err, docs) {
+    Board.find({ wi: wi_, sprint : sprint_ }, function (err, docs) {
 
         if (docs.length) {
 

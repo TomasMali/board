@@ -1,0 +1,17 @@
+version: '3'
+services:
+    angular-board-service:
+        container_name: container-angular-board
+        restart: always
+        build: .
+        ports:
+          - '8088:80'
+        links:
+          - node-board-service
+    node-board-service:
+        container_name: container-node-board
+        restart: always
+        build: ./server
+        ports: 
+           - '3008:3008'
+    

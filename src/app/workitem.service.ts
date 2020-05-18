@@ -44,7 +44,7 @@ export class WorkitemService {
         })
       } ))
       .subscribe(resultData => {
-        console.log("I dati sono: " + resultData)
+      //  console.log("I dati sono: " + resultData)
         this.workItems = resultData.filter(x => {
           return x.sprint === sprint
         })

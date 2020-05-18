@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 
 
 
-export class AppComponent implements OnInit, OnDestroy{
+export class AppComponent implements OnInit, OnDestroy {
 
 
   title = 'dashboard';
@@ -21,10 +21,15 @@ export class AppComponent implements OnInit, OnDestroy{
 
   workItems: Workitem[] = [];
 
+  percTodo = 0
+  percStart = 0
+  percTest = 0
+  percDone = 0
+
   private workItemSUb: Subscription
 
-  sprintNumber: string[] = ["Sprint 07", "Sprint 08", "Sprint 09", 
-  "Sprint 10", "Sprint 11", "Sprint 12", "Sprint 13"]
+  sprintNumber: string[] = ["Sprint 07", "Sprint 08", "Sprint 09",
+    "Sprint 10", "Sprint 11", "Sprint 12", "Sprint 13"]
 
   selectedSprintNumber: string = ""
 
@@ -35,18 +40,20 @@ export class AppComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
 
-    this.selectedSprintNumber = this.getCookie("sprint") === "" ? "Sprint 07" : this.getCookie("sprint") 
+    this.selectedSprintNumber = this.getCookie("sprint") === "" ? "Sprint 07" : this.getCookie("sprint")
 
     this.WIService.getAllWi(this.selectedSprintNumber)
 
-    console.log(this.getCookie("sprint"))
+    //console.log(this.getCookie("sprint"))
 
     this.workItemSUb = this.WIService.getWorkItemsUpdateListener()
-    .subscribe((workItems_: Workitem[]) => {
-             this.workItems = workItems_
-             this.selectedSprintNumber = this.getCookie("sprint") === "" ? "Sprint 07" : this.getCookie("sprint") 
+      .subscribe((workItems_: Workitem[]) => {
+        this.workItems = workItems_
+        this.selectedSprintNumber = this.getCookie("sprint") === "" ? "Sprint 07" : this.getCookie("sprint")
 
-    })
+      })
+
+
   }
 
   ngOnDestroy() {
@@ -58,7 +65,7 @@ export class AppComponent implements OnInit, OnDestroy{
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
+    for (var i = 0; i < ca.length; i++) {
       var c = ca[i];
       while (c.charAt(0) == ' ') {
         c = c.substring(1);
@@ -71,7 +78,7 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
 
-  onSprintChange(sprint: string){
+  onSprintChange(sprint: string) {
     this.selectedSprintNumber = sprint
     this.WIService.getAllWi(sprint)
 
@@ -145,19 +152,92 @@ export class AppComponent implements OnInit, OnDestroy{
 
 
 
+
+  /*
+    
+    var start = 0;
+    var test = 0;
+    var done = 0;
+  
+  
+  this.workItems.forEach(x => {
+  if(x.state === "N"){
+    todo+= x.storyPoint
+  }
+  else 
+  if(x.state === "S"){
+    start+= x.storyPoint
+  }
+  else 
+  if(x.state === "T"){
+    test += x.storyPoint
+  }
+  else
+  if(x.state === "D"){
+    done += x.storyPoint
+  }
+  })
+  
+  console.log( "Il totale è:" + totalPoint)
+  
+  this.percTodo = (todo * 100) / totalPoint
+  
+  this.percStart = (start * 100) / totalPoint
+  
+  this.percTest = (test * 100) / totalPoint
+  
+  this.percDone = (done * 100) / totalPoint
+  
+  */
+
+
   getToDo() {
+    var totalPoint = 0;
+    var todo = 0;
+
+    this.workItems.forEach(x => {
+      totalPoint += x.storyPoint
+      if (x.state === "N") {
+        todo += x.storyPoint
+      }
+    })
+    this.percTodo = todo * 100 / totalPoint
     return (this.workItems.filter(x => {
       return x.state === "N" // sta per to do 
     }))
+
+
   }
 
   getStartWorking() {
+    var totalPoint = 0;
+    var start = 0;
+
+    this.workItems.forEach(x => {
+      totalPoint += x.storyPoint
+      if (x.state === "S") {
+        start += x.storyPoint
+      }
+    })
+    this.percStart = start * 100 / totalPoint
+
     return (this.workItems.filter(x => {
       return x.state === "S"
     }))
   }
 
   getTest() {
+    var totalPoint = 0;
+    var test = 0;
+
+    this.workItems.forEach(x => {
+      totalPoint += x.storyPoint
+      if (x.state === "T") {
+        test += x.storyPoint
+      }
+    })
+    this.percTest = test * 100 / totalPoint
+
     return (this.workItems.filter(x => {
       return x.state === "T"
     }))
@@ -165,6 +245,17 @@ export class AppComponent implements OnInit, OnDestroy{
 
 
   getDone() {
+    var totalPoint = 0;
+    var done = 0;
+
+    this.workItems.forEach(x => {
+      totalPoint += x.storyPoint
+      if (x.state === "D") {
+        done += x.storyPoint
+      }
+    })
+    this.percDone = done * 100 / totalPoint
+
     return (this.workItems.filter(x => {
       return x.state === "D"
     }))
