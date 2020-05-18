@@ -87,7 +87,7 @@ export class WokitemComponent implements OnInit {
 
   deleteWorkItem() {
     if (confirm("Stai per cancellare il WI, proseguire?")) {
-      this.WIService.deleteWorkI(this.workitem.wi)
+      this.WIService.deleteWorkI(this.workitem.wi, this.workitem.sprint)
     }
   }
 

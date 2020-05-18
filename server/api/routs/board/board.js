@@ -84,9 +84,11 @@ router.post('/insert', (req, res, next) => {
 
     Board.find({ wi: wi_, sprint : sprint_ }, function (err, docs) {
 
+        console.log("dentro 44454545:   " + sprint_)
+
         if (docs.length) {
 
-            console.log("dentro docs")
+
 
             // se non modifico il colore, modifico lo stato
             if (color_ == null) {
@@ -176,8 +178,8 @@ router.post('/insert', (req, res, next) => {
 // DELETE  the single user 
 router.delete('/delete_one', (req, res, next) => {
     const wi_ = req.body.wi;
-
-    Board.remove({ wi: wi_ })
+const sprint_ = req.body.sprint
+    Board.remove({ wi: wi_, sprint: sprint_})
         .exec()
         .then(result => {
             res.status(200).json({
