@@ -96,7 +96,7 @@ router.post('/insert', (req, res, next) => {
                 console.log("valore_state:: " + state_)
 
                 Board.updateOne(
-                    { wi: wi_ },
+                    { wi: wi_ , sprint: sprint_},
                     { $set: { "state": state_ } }
                 ).exec()
                     .then(result => {
@@ -113,7 +113,7 @@ router.post('/insert', (req, res, next) => {
                 console.log("valore_state2222:: " + state_)
 
                 Board.updateOne(
-                    { wi: wi_ },
+                    { wi: wi_ , sprint: sprint_},
                     { $set: { "color": color_ } }
                 ).exec()
                     .then(result => {
@@ -194,6 +194,9 @@ const sprint_ = req.body.sprint
         })
 });
 
+
+/*
+
 // DELETE ALL the user 
 router.delete('/delete_all', (req, res, next) => {
     Board.deleteMany({})
@@ -211,7 +214,7 @@ router.delete('/delete_all', (req, res, next) => {
 
 
 
-
+*/
 
 
 
