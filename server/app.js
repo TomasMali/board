@@ -9,6 +9,7 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 
 const board = require('./api/routs/board/board')
+const pushToken = require('./api/routs/notification/pushnotification')
 
 
 const mongoose = require('mongoose')
@@ -18,7 +19,7 @@ const db_jexp = "mongodb+srv://visiting:visiting@visiting-g3tpj.mongodb.net/work
 const db_dashboard = "mongodb+srv://visiting:visiting@visiting-g3tpj.mongodb.net/dashboard?retryWrites=true&w=majority"
 
 
-mongoose.connect(db_dashboard,
+mongoose.connect(db_jexp,
  { useNewUrlParser: true }, function(error) {
   // if error is truthy, the initial connection failed.
   console.log(error);
@@ -51,6 +52,7 @@ app.use((req,res,next)=>{
 // just go to the ather file if you pass me ...
 
 app.use('/board', board)
+app.use('/pushtoken', pushToken)
 
 
 // if the user requires a path that doesnt exsists, i throw an error

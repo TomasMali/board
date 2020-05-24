@@ -50,6 +50,8 @@ export class WokitemComponent implements OnInit {
     }
     this.WIService.changeColorOrStateWorkItem(workItem)
 
+
+
   }
 
 
@@ -77,7 +79,8 @@ export class WokitemComponent implements OnInit {
     }
 
     this.WIService.changeColorOrStateWorkItem(workItem)
-
+        //
+        this.WIService.notifyAll(workItem)
 
   }
 

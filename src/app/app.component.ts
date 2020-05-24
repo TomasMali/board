@@ -3,6 +3,7 @@ import { Workitem } from './wokitem/workitem';
 import { FormGroup, FormControl } from '@angular/forms';
 import { WorkitemService } from './workitem.service';
 import { Subscription } from 'rxjs';
+import { MessagingService } from './service/messaging.service';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,8 @@ import { Subscription } from 'rxjs';
 
 
 export class AppComponent implements OnInit, OnDestroy {
-
-
+  message;
+//
   title = 'dashboard';
   malFormed: boolean = false
 
@@ -34,11 +35,16 @@ export class AppComponent implements OnInit, OnDestroy {
   selectedSprintNumber: string = ""
 
 
-  constructor(public WIService: WorkitemService) {
+  constructor(public WIService: WorkitemService, private messagingService: MessagingService) {
   }
 
 
   ngOnInit() {
+    //
+    this.messagingService.requestPermission()
+    this.messagingService.receiveMessage()
+    this.message = this.messagingService.currentMessage
+    //
 
     this.selectedSprintNumber = this.getCookie("sprint") === "" ? "Sprint 07" : this.getCookie("sprint")
 
@@ -152,43 +158,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
 
-
-  /*
-    
-    var start = 0;
-    var test = 0;
-    var done = 0;
-  
-  
-  this.workItems.forEach(x => {
-  if(x.state === "N"){
-    todo+= x.storyPoint
-  }
-  else 
-  if(x.state === "S"){
-    start+= x.storyPoint
-  }
-  else 
-  if(x.state === "T"){
-    test += x.storyPoint
-  }
-  else
-  if(x.state === "D"){
-    done += x.storyPoint
-  }
-  })
-  
-  console.log( "Il totale è:" + totalPoint)
-  
-  this.percTodo = (todo * 100) / totalPoint
-  
-  this.percStart = (start * 100) / totalPoint
-  
-  this.percTest = (test * 100) / totalPoint
-  
-  this.percDone = (done * 100) / totalPoint
-  
-  */
 
 
   getToDo() {
