@@ -14,23 +14,28 @@ export class WorkitemService {
   data: object
   loading: boolean
 
-/*
+
   board = "https://board--server.herokuapp.com/board"
   insertWi = "https://board--server.herokuapp.com/board/insert"
   deleteWi = "https://board--server.herokuapp.com/board/delete_one"
   //
   pushnotification = "https://board--server.herokuapp.com/pushtoken"
   pushnotificationInsert = "https://board--server.herokuapp.com/pushtoken/insert"
-*/
 
 
 
+/*
   board = "https://93.49.6.246:3008/board"
   insertWi = "https://93.49.6.246:3008/insert"
   deleteWi = "https://93.49.6.246:3008/board/delete_one"
   //
   pushnotification = "https://93.49.6.246:3008/pushtoken"
   pushnotificationInsert = "https://93.49.6.246:3008/pushtoken/insert"
+
+  */
+
+
+
   private workItemsUpdatet = new Subject<Workitem[]>()
   private workItems: Workitem[] = []
 
