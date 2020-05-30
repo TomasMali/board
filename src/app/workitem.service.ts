@@ -13,12 +13,12 @@ export class WorkitemService {
 
   data: object
   loading: boolean
-  board = "https://93.49.6.246:3008/board"
-  insertWi = "https://93.49.6.246:3008/board/insert"
-  deleteWi = "https://93.49.6.246:3008/board/delete_one"
+  board = "https://localhost:3008/board"
+  insertWi = "https://localhost:3008/board/insert"
+  deleteWi = "https://localhost:3008/board/delete_one"
   //
-  pushnotification = "https://93.49.6.246:3008/pushtoken"
-  pushnotificationInsert = "https://93.49.6.246:3008/pushtoken/insert"
+  pushnotification = "https://localhost:3008/pushtoken"
+  pushnotificationInsert = "https://localhost:3008/pushtoken/insert"
   private workItemsUpdatet = new Subject<Workitem[]>()
   private workItems: Workitem[] = []
 
