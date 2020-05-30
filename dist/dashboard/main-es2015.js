@@ -762,20 +762,21 @@ __webpack_require__.r(__webpack_exports__);
 let WorkitemService = class WorkitemService {
     constructor(http) {
         this.http = http;
-        /*
-          board = "https://board--server.herokuapp.com/board"
-          insertWi = "https://board--server.herokuapp.com/board/insert"
-          deleteWi = "https://board--server.herokuapp.com/board/delete_one"
-          //
-          pushnotification = "https://board--server.herokuapp.com/pushtoken"
-          pushnotificationInsert = "https://board--server.herokuapp.com/pushtoken/insert"
-        */
-        this.board = "https://93.49.6.246:3008/board";
-        this.insertWi = "https://93.49.6.246:3008/insert";
-        this.deleteWi = "https://93.49.6.246:3008/board/delete_one";
+        this.board = "https://board--server.herokuapp.com/board";
+        this.insertWi = "https://board--server.herokuapp.com/board/insert";
+        this.deleteWi = "https://board--server.herokuapp.com/board/delete_one";
         //
-        this.pushnotification = "https://93.49.6.246:3008/pushtoken";
-        this.pushnotificationInsert = "https://93.49.6.246:3008/pushtoken/insert";
+        this.pushnotification = "https://board--server.herokuapp.com/pushtoken";
+        this.pushnotificationInsert = "https://board--server.herokuapp.com/pushtoken/insert";
+        /*
+          board = "https://93.49.6.246:3008/board"
+          insertWi = "https://93.49.6.246:3008/insert"
+          deleteWi = "https://93.49.6.246:3008/board/delete_one"
+          //
+          pushnotification = "https://93.49.6.246:3008/pushtoken"
+          pushnotificationInsert = "https://93.49.6.246:3008/pushtoken/insert"
+        
+          */
         this.workItemsUpdatet = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         this.workItems = [];
         this.pushNotificationTokens = [];
