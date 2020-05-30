@@ -25,12 +25,12 @@ export class WorkitemService {
 
 
 
-  board = "https://93.49.6.246:8088/board"
-  insertWi = "https://93.49.6.246:8088/insert"
-  deleteWi = "https://93.49.6.246:8088/board/delete_one"
+  board = "https://93.49.6.246:3008/board"
+  insertWi = "https://93.49.6.246:3008/insert"
+  deleteWi = "https://93.49.6.246:3008/board/delete_one"
   //
-  pushnotification = "https://93.49.6.246:8088/pushtoken"
-  pushnotificationInsert = "https://93.49.6.246:8088/pushtoken/insert"
+  pushnotification = "https://93.49.6.246:3008/pushtoken"
+  pushnotificationInsert = "https://93.49.6.246:3008/pushtoken/insert"
   private workItemsUpdatet = new Subject<Workitem[]>()
   private workItems: Workitem[] = []
 
