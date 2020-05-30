@@ -8,17 +8,29 @@ import { createOfflineCompileUrlResolver } from '@angular/compiler';
 @Injectable({
   providedIn: 'root'
 })
-export class WorkitemService {
+export class WorkitemService {    
 
 
   data: object
   loading: boolean
-  board = "https://localhost:3008/board"
-  insertWi = "https://localhost:3008/board/insert"
-  deleteWi = "https://localhost:3008/board/delete_one"
+
+/*
+  board = "https://board--server.herokuapp.com/board"
+  insertWi = "https://board--server.herokuapp.com/board/insert"
+  deleteWi = "https://board--server.herokuapp.com/board/delete_one"
   //
-  pushnotification = "https://localhost:3008/pushtoken"
-  pushnotificationInsert = "https://localhost:3008/pushtoken/insert"
+  pushnotification = "https://board--server.herokuapp.com/pushtoken"
+  pushnotificationInsert = "https://board--server.herokuapp.com/pushtoken/insert"
+*/
+
+
+
+  board = "https://93.49.6.246:8088/board"
+  insertWi = "https://93.49.6.246:8088/insert"
+  deleteWi = "https://93.49.6.246:8088/board/delete_one"
+  //
+  pushnotification = "https://93.49.6.246:8088/pushtoken"
+  pushnotificationInsert = "https://93.49.6.246:8088/pushtoken/insert"
   private workItemsUpdatet = new Subject<Workitem[]>()
   private workItems: Workitem[] = []
 
