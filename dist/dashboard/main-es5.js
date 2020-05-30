@@ -1422,9 +1422,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, WorkitemService);
 
         this.http = http;
-        this.board = "http://93.49.6.246:3008/board";
-        this.insertWi = "http://93.49.6.246:3008/board/insert";
-        this.deleteWi = "http://93.49.6.246:3008/board/delete_one"; //
+        this.board = "https://93.49.6.246:3008/board";
+        this.insertWi = "https://93.49.6.246:3008/board/insert";
+        this.deleteWi = "https://93.49.6.246:3008/board/delete_one"; //
 
         this.pushnotification = "http://93.49.6.246:3008/pushtoken";
         this.pushnotificationInsert = "http://93.49.6.246:3008/pushtoken/insert";

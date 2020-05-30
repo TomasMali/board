@@ -66,11 +66,17 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "dashboard:build"
+            "browserTarget": "dashboard:build",
+            "ssl": true,
+            "sslKey": "./server/key.pem",
+            "sslCert": "./server/cert.pem"
           },
           "configurations": {
             "production": {
-              "browserTarget": "dashboard:build:production"
+              "browserTarget": "dashboard:build:production",
+              "ssl": true,
+              "sslKey": "./server/key.pem",
+              "sslCert": "./server/cert.pem"
             }
           }
         },
