@@ -12,19 +12,40 @@ export class WokitemComponent implements OnInit {
 
   @Input() workitem: Workitem
 
-  color: string = "lavender"
+  color: string = "Lavender"
 
   constructor(private WIService: WorkitemService) {
 
   }
 
   ngOnInit() {
+
+
+this.colors = [
+  { name: 'Lavender' },
+  { name: 'yellow' },
+  { name: 'GreenYellow' },
+  { name: 'Lavender' },
+  { name: "LightSkyBlue" },
+  { name: "DarkOrange" },
+  { name: "Orange" }
+]
+
+this.states = [
+  { name: 'N' },
+  { name: 'S' },
+  { name: 'T' },
+  { name: 'D' }
+
+]
+
     this.selectedState = this.workitem.state
     this.selectedColor = this.workitem.color
   }
 
 
   colors = [
+    { name: 'Lavender' },
     { name: 'yellow' },
     { name: 'GreenYellow' },
     { name: 'Lavender' },

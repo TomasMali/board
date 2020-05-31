@@ -6,13 +6,13 @@
 
   Colore:
   <select (change)="selectOptionColors($event.target.value)" [(ngModel)]="selectedColor" name="selectedColor"
-    [value]='Lavender'>
+    [value]= colors[0].name>
     <option *ngFor="let color of colors">{{color.name}}</option>
   </select>
 
   Sposta:
   <select (change)="selectOptionState($event.target.value)" [(ngModel)]="selectedState" name="selectedState"
-    [value]='N'>
+    [value]=states[0].name>
     <option *ngFor="let state of states">{{state.name}}</option>
   </select>
 

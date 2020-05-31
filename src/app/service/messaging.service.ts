@@ -30,6 +30,29 @@ export class MessagingService {
       (payload) => {
         console.log("new message received. ", payload);
         this.currentMessage.next(payload);
+        this.showWithClick(payload)
       })
   }
+
+showWithClick(payload: any){
+  let notify_data = payload['notification']
+  let title = notify_data['title']
+
+let option = {
+  body: notify_data['title']
+}
+
+let notify: Notification = new Notification(title,option)
+
+notify.onclick = event => {
+  event.preventDefault();
+  window.location.href = "https://board-ivs97i8m4.now.sh/"
+
+}
+
+}
+
+
+
+
 }
