@@ -1474,7 +1474,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           */
 
         this.board = "http://93.49.6.246:3008/board";
-        this.insertWi = "http://93.49.6.246:3008/insert";
+        this.insertWi = "http://93.49.6.246:3008/board/insert";
         this.deleteWi = "http://93.49.6.246:3008/board/delete_one"; //
 
         this.pushnotification = "http://93.49.6.246:3008/pushtoken";

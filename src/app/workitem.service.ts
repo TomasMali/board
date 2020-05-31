@@ -27,7 +27,7 @@ export class WorkitemService {
 
 
   board = "http://93.49.6.246:3008/board"
-  insertWi = "http://93.49.6.246:3008/insert"
+  insertWi = "http://93.49.6.246:3008/board/insert"
   deleteWi = "http://93.49.6.246:3008/board/delete_one"
   //
   pushnotification = "http://93.49.6.246:3008/pushtoken"
