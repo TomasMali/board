@@ -101,7 +101,7 @@ this.states = [
 
     this.WIService.changeColorOrStateWorkItem(workItem)
         //
-        this.WIService.notifyAll(workItem)
+     //REMOVE   this.WIService.notifyAll(workItem)
 
   }
 

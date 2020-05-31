@@ -611,7 +611,7 @@ let MessagingService = class MessagingService {
     requestPermission() {
         this.angularFireMessaging.requestToken.subscribe((token) => {
             console.log(token);
-            this.workItemService.insertTokenPushNotification(token);
+            //REMOVE   this.workItemService.insertTokenPushNotification(token)
         }, (err) => {
             console.error('Unable to get permission to notify.', err);
         });
@@ -742,7 +742,7 @@ let WokitemComponent = class WokitemComponent {
         };
         this.WIService.changeColorOrStateWorkItem(workItem);
         //
-        this.WIService.notifyAll(workItem);
+        //REMOVE   this.WIService.notifyAll(workItem)
     }
     deleteWorkItem() {
         if (confirm("Stai per cancellare il WI, proseguire?")) {

@@ -1168,12 +1168,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(MessagingService, [{
         key: "requestPermission",
         value: function requestPermission() {
-          var _this2 = this;
-
           this.angularFireMessaging.requestToken.subscribe(function (token) {
-            console.log(token);
-
-            _this2.workItemService.insertTokenPushNotification(token);
+            console.log(token); //REMOVE   this.workItemService.insertTokenPushNotification(token)
           }, function (err) {
             console.error('Unable to get permission to notify.', err);
           });
@@ -1181,12 +1177,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "receiveMessage",
         value: function receiveMessage() {
-          var _this3 = this;
+          var _this2 = this;
 
           this.angularFireMessaging.messages.subscribe(function (payload) {
             console.log("new message received. ", payload);
 
-            _this3.currentMessage.next(payload); //   this.showWithClick(payload)
+            _this2.currentMessage.next(payload); //   this.showWithClick(payload)
 
           });
         }
@@ -1373,8 +1369,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             color: null
           };
           this.WIService.changeColorOrStateWorkItem(workItem); //
-
-          this.WIService.notifyAll(workItem);
+          //REMOVE   this.WIService.notifyAll(workItem)
         }
       }, {
         key: "deleteWorkItem",
@@ -1492,7 +1487,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllWi",
         value: function getAllWi(sprint) {
-          var _this4 = this;
+          var _this3 = this;
 
           this.http.get(this.board).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (data) {
             return data.message.map(function (workI) {
@@ -1507,11 +1502,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             });
           })).subscribe(function (resultData) {
             //  console.log("I dati sono: " + resultData)
-            _this4.workItems = resultData.filter(function (x) {
+            _this3.workItems = resultData.filter(function (x) {
               return x.sprint === sprint;
             });
 
-            _this4.workItemsUpdatet.next(_toConsumableArray(_this4.workItems));
+            _this3.workItemsUpdatet.next(_toConsumableArray(_this3.workItems));
           });
         }
       }, {
@@ -1522,16 +1517,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "changeColorOrStateWorkItem",
         value: function changeColorOrStateWorkItem(wi) {
-          var _this5 = this;
+          var _this4 = this;
 
           return this.http.post(this.insertWi, wi).subscribe(function (resultData) {
             if (resultData) {
               // find the WorkItem and modify it
-              var foundIndexWi = _this5.workItems.findIndex(function (x) {
+              var foundIndexWi = _this4.workItems.findIndex(function (x) {
                 return x.wi === wi.wi;
               });
 
-              var wi_new = Object.assign({}, _this5.workItems[foundIndexWi]); // voglio modificare lo stato
+              var wi_new = Object.assign({}, _this4.workItems[foundIndexWi]); // voglio modificare lo stato
 
               if (wi.color == null) {
                 wi_new.state = wi.state;
@@ -1540,9 +1535,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   wi_new.color = wi.color;
                 }
 
-              _this5.workItems[foundIndexWi] = wi_new;
+              _this4.workItems[foundIndexWi] = wi_new;
 
-              _this5.workItemsUpdatet.next(_toConsumableArray(_this5.workItems));
+              _this4.workItemsUpdatet.next(_toConsumableArray(_this4.workItems));
             }
           }, function (err) {
             return console.log(err);
@@ -1551,15 +1546,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "insertWorkItem",
         value: function insertWorkItem(wi) {
-          var _this6 = this;
+          var _this5 = this;
 
           return this.http.post(this.insertWi, wi).subscribe(function (resultData) {
             console.log(resultData);
 
             if (resultData.message) {
-              _this6.workItems.push(wi);
+              _this5.workItems.push(wi);
 
-              _this6.workItemsUpdatet.next(_toConsumableArray(_this6.workItems));
+              _this5.workItemsUpdatet.next(_toConsumableArray(_this5.workItems));
             } else {
               alert("Work item già esistente");
             }
@@ -1587,7 +1582,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "notifyAll",
         value: function notifyAll(wi) {
-          var _this7 = this;
+          var _this6 = this;
 
           var state = "";
           if (wi.state === "N") state = "To do";else if (wi.state === "S") state = "Start working";else if (wi.state === "T") state = "Test";else if (wi.state === "D") state = "Done";
@@ -1596,10 +1591,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               return tokenReturned.token;
             });
           })).subscribe(function (resultData) {
-            _this7.pushNotificationTokens = resultData;
-            console.log("I dati token sono: " + _this7.pushNotificationTokens); // per ogni token manda un messaggio 
+            _this6.pushNotificationTokens = resultData;
+            console.log("I dati token sono: " + _this6.pushNotificationTokens); // per ogni token manda un messaggio 
 
-            _this7.pushNotificationTokens.forEach(function (token) {
+            _this6.pushNotificationTokens.forEach(function (token) {
               var httpOptions = {
                 headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                   'Content-Type': 'application/json',
@@ -1607,7 +1602,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 })
               };
 
-              _this7.http.post("https://fcm.googleapis.com/fcm/send", {
+              _this6.http.post("https://fcm.googleapis.com/fcm/send", {
                 "notification": {
                   "title": "Dashboard",
                   "icon": "",
@@ -1632,7 +1627,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteWorkI",
         value: function deleteWorkI(wi, sprint) {
-          var _this8 = this;
+          var _this7 = this;
 
           var options = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
@@ -1644,11 +1639,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           };
           this.http.delete(this.deleteWi, options).subscribe(function (res) {
-            _this8.workItems.splice(_this8.workItems.findIndex(function (i) {
+            _this7.workItems.splice(_this7.workItems.findIndex(function (i) {
               return i.wi === wi;
             }), 1);
 
-            _this8.workItemsUpdatet.next(_toConsumableArray(_this8.workItems));
+            _this7.workItemsUpdatet.next(_toConsumableArray(_this7.workItems));
           }, function (err) {
             return alert("Problemi con la cancellazione!");
           });

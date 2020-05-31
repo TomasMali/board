@@ -94,7 +94,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   onSearch(data) {
-
     //   alert(  data.searchForm )
     this.WIService.getOne(data.searchForm).subscribe(
       res => {
@@ -122,8 +121,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   onInsertWiSubmit(data) {
-
-
     var obj = {
       wi: data.workItemForm,
       storyPoint: data.storyPointForm,
@@ -132,13 +129,9 @@ export class AppComponent implements OnInit, OnDestroy {
       state: "N",
       color: "Lavender"
     }
-
-
     console.log("I coockie sono: " + this.getCookie("sprint"))
 
     this.WIService.insertWorkItem(obj)
-
-
   }
 
   sprints = [

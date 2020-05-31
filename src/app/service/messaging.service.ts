@@ -17,7 +17,7 @@ export class MessagingService {
     this.angularFireMessaging.requestToken.subscribe(
       (token) => {
         console.log(token);
-        this.workItemService.insertTokenPushNotification(token)
+     //REMOVE   this.workItemService.insertTokenPushNotification(token)
       },
       (err) => {
         console.error('Unable to get permission to notify.', err);
