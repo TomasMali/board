@@ -30,7 +30,7 @@ export class MessagingService {
       (payload) => {
         console.log("new message received. ", payload);
         this.currentMessage.next(payload);
-        this.showWithClick(payload)
+     //   this.showWithClick(payload)
       })
   }
 
